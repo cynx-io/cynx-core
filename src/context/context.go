@@ -39,10 +39,6 @@ func SetupContext(ctx context.Context, req RequestWithBase) context.Context {
 	if baseReq.UserId != nil {
 		ctx = SetUserId(ctx, *baseReq.UserId)
 	}
-
-	if baseReq.Timestamp != nil {
-		ctx = context.WithValue(ctx, KeyBaseRequest, baseReq.Timestamp)
-	}
 	return ctx
 }
 

@@ -9,7 +9,7 @@ package core
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -27,7 +27,6 @@ type BaseRequest struct {
 	RequestId     string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	RequestOrigin string                 `protobuf:"bytes,2,opt,name=request_origin,json=requestOrigin,proto3" json:"request_origin,omitempty"`
 	RequestPath   string                 `protobuf:"bytes,3,opt,name=request_path,json=requestPath,proto3" json:"request_path,omitempty"`
-	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	UserId        *int32                 `protobuf:"varint,5,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 	Username      *string                `protobuf:"bytes,6,opt,name=username,proto3,oneof" json:"username,omitempty"`
 	UserType      *string                `protobuf:"bytes,7,opt,name=user_type,json=userType,proto3,oneof" json:"user_type,omitempty"` // "regular", "guest"
@@ -84,13 +83,6 @@ func (x *BaseRequest) GetRequestPath() string {
 		return x.RequestPath
 	}
 	return ""
-}
-
-func (x *BaseRequest) GetTimestamp() *timestamppb.Timestamp {
-	if x != nil {
-		return x.Timestamp
-	}
-	return nil
 }
 
 func (x *BaseRequest) GetUserId() int32 {
@@ -259,13 +251,12 @@ var File_core_proto protoreflect.FileDescriptor
 const file_core_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"core.proto\x12\x04core\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb8\x02\n" +
+	"core.proto\x12\x04core\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfe\x01\n" +
 	"\vBaseRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\tR\trequestId\x12%\n" +
 	"\x0erequest_origin\x18\x02 \x01(\tR\rrequestOrigin\x12!\n" +
-	"\frequest_path\x18\x03 \x01(\tR\vrequestPath\x128\n" +
-	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1c\n" +
+	"\frequest_path\x18\x03 \x01(\tR\vrequestPath\x12\x1c\n" +
 	"\auser_id\x18\x05 \x01(\x05H\x00R\x06userId\x88\x01\x01\x12\x1f\n" +
 	"\busername\x18\x06 \x01(\tH\x01R\busername\x88\x01\x01\x12 \n" +
 	"\tuser_type\x18\a \x01(\tH\x02R\buserType\x88\x01\x01B\n" +
@@ -296,21 +287,19 @@ func file_core_proto_rawDescGZIP() []byte {
 
 var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_core_proto_goTypes = []any{
-	(*BaseRequest)(nil),           // 0: core.BaseRequest
-	(*BaseResponse)(nil),          // 1: core.BaseResponse
-	(*GenericRequest)(nil),        // 2: core.GenericRequest
-	(*GenericResponse)(nil),       // 3: core.GenericResponse
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*BaseRequest)(nil),     // 0: core.BaseRequest
+	(*BaseResponse)(nil),    // 1: core.BaseResponse
+	(*GenericRequest)(nil),  // 2: core.GenericRequest
+	(*GenericResponse)(nil), // 3: core.GenericResponse
 }
 var file_core_proto_depIdxs = []int32{
-	4, // 0: core.BaseRequest.timestamp:type_name -> google.protobuf.Timestamp
-	0, // 1: core.GenericRequest.base:type_name -> core.BaseRequest
-	1, // 2: core.GenericResponse.base:type_name -> core.BaseResponse
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0, // 0: core.GenericRequest.base:type_name -> core.BaseRequest
+	1, // 1: core.GenericResponse.base:type_name -> core.BaseResponse
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_core_proto_init() }

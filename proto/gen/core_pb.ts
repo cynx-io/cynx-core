@@ -4,7 +4,6 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -12,7 +11,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file core.proto.
  */
 export const file_core: GenFile = /*@__PURE__*/
-  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIuoBCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRItCgl0aW1lc3RhbXAYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoCUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIioKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZUItWitnaXRodWIuY29tL2N5bnhlZXMvY3lueC1jb3JlL3Byb3RvL2dlbjtjb3JlYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIrsBCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRIUCgd1c2VyX2lkGAUgASgFSACIAQESFQoIdXNlcm5hbWUYBiABKAlIAYgBARIWCgl1c2VyX3R5cGUYByABKAlIAogBAUIKCghfdXNlcl9pZEILCglfdXNlcm5hbWVCDAoKX3VzZXJfdHlwZSIqCgxCYXNlUmVzcG9uc2USDAoEY29kZRgBIAEoCRIMCgRkZXNjGAIgASgJIjEKDkdlbmVyaWNSZXF1ZXN0Eh8KBGJhc2UYASABKAsyES5jb3JlLkJhc2VSZXF1ZXN0IjMKD0dlbmVyaWNSZXNwb25zZRIgCgRiYXNlGAEgASgLMhIuY29yZS5CYXNlUmVzcG9uc2VCLVorZ2l0aHViLmNvbS9jeW54ZWVzL2N5bngtY29yZS9wcm90by9nZW47Y29yZWIGcHJvdG8z", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message core.BaseRequest
@@ -32,11 +31,6 @@ export type BaseRequest = Message<"core.BaseRequest"> & {
    * @generated from field: string request_path = 3;
    */
   requestPath: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp timestamp = 4;
-   */
-  timestamp?: Timestamp;
 
   /**
    * @generated from field: optional int32 user_id = 5;

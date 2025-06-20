@@ -13,8 +13,6 @@ message BaseRequest {
 
   string request_path = 3;
 
-  google.protobuf.Timestamp timestamp = 4;
-
   optional int32 user_id = 5;
   optional string username = 6;
   optional string user_type = 7; // "regular", "guest"
