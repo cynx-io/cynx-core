@@ -18,7 +18,6 @@ func LogTrxElasticsearch(index string, entry TrxEntry) error {
 		return err
 	}
 
-	Debug("Logging to Elasticsearch: ", string(data))
 	res, err := elasticClient.Index(
 		index,
 		bytes.NewReader(data),
@@ -46,7 +45,6 @@ func LogElasticsearch(index string, entry LogEntry) error {
 		return err
 	}
 
-	Debug("Logging to Elasticsearch: ", string(data))
 	res, err := elasticClient.Index(
 		index,
 		bytes.NewReader(data),
