@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package plato;
+
+option go_package = "github.com/cynxees/janus-gateway/api/proto/gen/core;core";
+
+message BaseRequest {
+  string request_id = 1;
+
+  string request_origin = 2;
+
+  string request_path = 3;
+
+  google.protobuf.Timestamp timestamp = 4;
+
+  optional int32 user_id = 5;
+  optional string username = 6;
+  optional string user_type = 7; // "regular", "guest"
+}
+
+message BaseResponse {
+  string code = 1;
+  string desc = 2;
+}
+
+message GenericRequest {
+  BaseRequest base = 1;
+}
+
+message GenericResponse {
+  BaseResponse base = 1;
+}
