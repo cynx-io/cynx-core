@@ -280,7 +280,7 @@ const file_core_proto_rawDesc = "" +
 	"\x0eGenericRequest\x12%\n" +
 	"\x04base\x18\x01 \x01(\v2\x11.core.BaseRequestR\x04base\"9\n" +
 	"\x0fGenericResponse\x12&\n" +
-	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04baseB2Z0github.com/cynxees/cynx-core/proto/gen/core;coreb\x06proto3"
+	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04baseB-Z+github.com/cynxees/cynx-core/proto/gen;coreb\x06proto3"
 
 var (
 	file_core_proto_rawDescOnce sync.Once
