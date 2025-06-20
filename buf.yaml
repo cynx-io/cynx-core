@@ -1,2 +1,7 @@
-version: v1
-name: buf.build/cynxees/cynx-core
+version: v1beta1
+name: buf.build/cynx/cynx-core
+build:
+  roots:
+    - proto
+deps:
+  - buf.build/googleapis/googleapis

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-package plato;
+package core;
 
 option go_package = "github.com/cynxees/cynx-core/proto/core;core";
 

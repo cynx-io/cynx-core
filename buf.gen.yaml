@@ -1,0 +1,15 @@
+version: v1
+plugins:
+  - name: go
+    out: proto/gen
+    opt: [paths=source_relative]
+  - name: go-grpc
+    out: proto/gen
+    opt: [paths=source_relative]
+  - name: validate
+    out: proto/gen
+    opt: [paths=source_relative, lang=go]
+  - name: es
+    out: proto/gen
+    opt: [target=ts]
+    strategy: directory
