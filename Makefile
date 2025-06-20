@@ -13,3 +13,4 @@ publish:
 	git push origin main
 	git tag -a v0.0.5.$(shell date +%Y%m%d%H%M%S) -m "Release $(shell date +%Y%m%d%H%M%S)"
 	git push origin v$(shell date +%Y%m%d%H%M%S)
+
