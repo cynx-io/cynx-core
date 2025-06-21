@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.23
-COMMIT_MSG := "randomlib"
+TAG := v0.0.24
+COMMIT_MSG := "typo"
 
 .PHONY: publish
 publish: proto
