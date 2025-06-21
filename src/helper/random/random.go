@@ -4,19 +4,29 @@ import (
 	"math/rand"
 )
 
-func RandomNumbers(length int) string {
+func RandomNumbers(min, max int) string {
+	length := RandomIntInRange(min, max)
 	digits := "0123456789"
 	return RandomFromCharset(length, digits)
 }
 
-func RandomLetters(length int) string {
+func RandomLetters(min, max int) string {
+	length := RandomIntInRange(min, max)
 	letters := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	return RandomFromCharset(length, letters)
 }
 
-func RandomAlphanumerics(length int) string {
+func RandomAlphanumerics(min, max int) string {
+	length := RandomIntInRange(min, max)
 	alnum := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	return RandomFromCharset(length, alnum)
+}
+
+func RandomIntInRange(min, max int) int {
+	if max < min {
+		min, max = max, min
+	}
+	return rand.Intn(max-min+1) + min
 }
 
 func RandomFromCharset(length int, charset string) string {

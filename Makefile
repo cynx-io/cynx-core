@@ -12,7 +12,7 @@ proto:
 	buf generate
 
 
-TAG := v0.0.21
+TAG := v0.0.22
 COMMIT_MSG := "randomlib"
 
 .PHONY: publish
