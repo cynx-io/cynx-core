@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.24
-COMMIT_MSG := "typo"
+TAG := v0.0.25
+COMMIT_MSG := "ctx type user"
 
 .PHONY: publish
 publish: proto

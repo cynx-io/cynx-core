@@ -16,6 +16,7 @@ type TrxEntry struct {
 	Timestamp     time.Time       `json:"timestamp"`
 	UserId        *int32          `json:"userId"`
 	Username      *string         `json:"username"`
+	UserType      *int32          `json:"userType"`
 	RequestId     string          `json:"requestId"`
 	RequestOrigin string          `json:"requestOrigin"` // frontend website ex www.makeadle.com
 	IpAddress     string          `json:"ipAddress"`     // client ip
@@ -31,6 +32,7 @@ type LogEntry struct {
 	Timestamp time.Time `json:"timestamp"`
 	UserId    *int32    `json:"userId"`
 	Username  *string   `json:"username"`
+	UserType  *int32    `json:"userType"`
 	RequestId string    `json:"requestId"`
 	Type      string    `json:"type,omitempty"`    // e.g. "debug", "warn", "error", "info"
 	Message   string    `json:"message,omitempty"` // message

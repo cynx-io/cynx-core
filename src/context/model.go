@@ -10,8 +10,9 @@ const (
 	KeyRequestPath   Key = "request_path"
 
 	KeyUsername Key = "username"
+	KeyUserId   Key = "user_id"   // int32
+	KeyUserType Key = "user_type" // int32
 
-	KeyUserId      Key = "user_id"      // int32
 	KeyBaseRequest Key = "base_request" // *pb.BaseRequest (protobuf message for base request info
 )
 

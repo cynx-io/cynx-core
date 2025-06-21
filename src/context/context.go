@@ -39,6 +39,11 @@ func SetupContext(ctx context.Context, req RequestWithBase) context.Context {
 	if baseReq.UserId != nil {
 		ctx = SetUserId(ctx, *baseReq.UserId)
 	}
+
+	if baseReq.UserType != nil {
+		ctx = SetUserType(ctx, *baseReq.UserType)
+	}
+	
 	return ctx
 }
 
@@ -66,6 +71,10 @@ func SetKey(ctx context.Context, key Key, value string) context.Context {
 
 func SetUserId(ctx context.Context, userId int32) context.Context {
 	return context.WithValue(ctx, KeyUserId, userId)
+}
+
+func SetUserType(ctx context.Context, userType int32) context.Context {
+	return context.WithValue(ctx, KeyUserType, userType)
 }
 
 func GetKeyOrEmpty(ctx context.Context, key Key) string {
@@ -107,4 +116,17 @@ func GetUserId(ctx context.Context) *int32 {
 		return nil
 	}
 	return &userId
+}
+
+func GetUserType(ctx context.Context) *int32 {
+	value := ctx.Value(KeyUserType)
+	if value == nil {
+		return nil
+	}
+
+	userType, ok := value.(int32)
+	if !ok {
+		return nil
+	}
+	return &userType
 }
