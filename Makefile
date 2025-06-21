@@ -11,12 +11,15 @@ proto:
 	buf dep update
 	buf generate
 
+
+TAG := v0.0.21
+COMMIT_MSG := "randomlib"
+
 .PHONY: publish
 publish: proto
-	@echo "Publishing to GitHub..."
 	git add .
-	git commit -m "proto"
+	git commit -m $(COMMIT_MSG)
 	git push origin main
-	git tag -a v0.0.20 -m ""
-	git push origin v0.0.20
+	git tag -a $(TAG) -m $(COMMIT_MSG)
+	git push origin $(TAG)
 
