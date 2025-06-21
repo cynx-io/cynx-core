@@ -8,31 +8,28 @@ import (
 	"strings"
 )
 
-func InitConfig[Cfg struct{}](configPath string, configStruct Cfg) (*Cfg, error) {
+func InitConfig[Cfg any](configPath string, config *Cfg) (err error) {
 	// Load .env file into environment variables
 	if err := godotenv.Load(); err != nil {
 		fmt.Println(".env file not found")
 	}
 
-	viper.SetConfigName("config")
-	viper.AddConfigPath(".")
-	viper.SetConfigType("json")
+	viper.SetConfigFile(configPath)
 
 	// Set environment variable prefix for nested configs
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.AutomaticEnv()
-	config := &Cfg{}
 	BindEnvs(config, "")
 
-	err := viper.ReadInConfig()
+	err = viper.ReadInConfig()
 	if err != nil {
 		panic(err)
 	}
 
 	if err = viper.Unmarshal(config); err != nil {
-		return nil, err
+		return
 	}
-	return config, nil
+	return
 }
 
 func BindEnvs(iface interface{}, parentKey string) {
