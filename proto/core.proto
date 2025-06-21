@@ -12,10 +12,11 @@ message BaseRequest {
   string request_origin = 2;
 
   string request_path = 3;
+  string ip_address = 4;
 
   optional int32 user_id = 5;
   optional string username = 6;
-  optional string user_type = 7; // "regular", "guest"
+  optional int32 user_type = 7; // 0 Guest, 1 Normal
 }
 
 message BaseResponse {

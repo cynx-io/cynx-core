@@ -29,7 +29,7 @@ type BaseRequest struct {
 	RequestPath   string                 `protobuf:"bytes,3,opt,name=request_path,json=requestPath,proto3" json:"request_path,omitempty"`
 	UserId        *int32                 `protobuf:"varint,5,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 	Username      *string                `protobuf:"bytes,6,opt,name=username,proto3,oneof" json:"username,omitempty"`
-	UserType      *string                `protobuf:"bytes,7,opt,name=user_type,json=userType,proto3,oneof" json:"user_type,omitempty"` // "regular", "guest"
+	UserType      *int32                 `protobuf:"varint,7,opt,name=user_type,json=userType,proto3,oneof" json:"user_type,omitempty"` // 0 Guest, 1 Normal
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -99,11 +99,11 @@ func (x *BaseRequest) GetUsername() string {
 	return ""
 }
 
-func (x *BaseRequest) GetUserType() string {
+func (x *BaseRequest) GetUserType() int32 {
 	if x != nil && x.UserType != nil {
 		return *x.UserType
 	}
-	return ""
+	return 0
 }
 
 type BaseResponse struct {
@@ -259,7 +259,7 @@ const file_core_proto_rawDesc = "" +
 	"\frequest_path\x18\x03 \x01(\tR\vrequestPath\x12\x1c\n" +
 	"\auser_id\x18\x05 \x01(\x05H\x00R\x06userId\x88\x01\x01\x12\x1f\n" +
 	"\busername\x18\x06 \x01(\tH\x01R\busername\x88\x01\x01\x12 \n" +
-	"\tuser_type\x18\a \x01(\tH\x02R\buserType\x88\x01\x01B\n" +
+	"\tuser_type\x18\a \x01(\x05H\x02R\buserType\x88\x01\x01B\n" +
 	"\n" +
 	"\b_user_idB\v\n" +
 	"\t_usernameB\f\n" +
