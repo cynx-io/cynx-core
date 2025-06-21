@@ -63,6 +63,8 @@ func (m *BaseRequest) validate(all bool) error {
 
 	// no validation rules for RequestPath
 
+	// no validation rules for IpAddress
+
 	if m.UserId != nil {
 		// no validation rules for UserId
 	}

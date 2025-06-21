@@ -27,6 +27,7 @@ type BaseRequest struct {
 	RequestId     string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	RequestOrigin string                 `protobuf:"bytes,2,opt,name=request_origin,json=requestOrigin,proto3" json:"request_origin,omitempty"`
 	RequestPath   string                 `protobuf:"bytes,3,opt,name=request_path,json=requestPath,proto3" json:"request_path,omitempty"`
+	IpAddress     string                 `protobuf:"bytes,4,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 	UserId        *int32                 `protobuf:"varint,5,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 	Username      *string                `protobuf:"bytes,6,opt,name=username,proto3,oneof" json:"username,omitempty"`
 	UserType      *int32                 `protobuf:"varint,7,opt,name=user_type,json=userType,proto3,oneof" json:"user_type,omitempty"` // 0 Guest, 1 Normal
@@ -81,6 +82,13 @@ func (x *BaseRequest) GetRequestOrigin() string {
 func (x *BaseRequest) GetRequestPath() string {
 	if x != nil {
 		return x.RequestPath
+	}
+	return ""
+}
+
+func (x *BaseRequest) GetIpAddress() string {
+	if x != nil {
+		return x.IpAddress
 	}
 	return ""
 }
@@ -251,12 +259,14 @@ var File_core_proto protoreflect.FileDescriptor
 const file_core_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"core.proto\x12\x04core\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfe\x01\n" +
+	"core.proto\x12\x04core\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9d\x02\n" +
 	"\vBaseRequest\x12\x1d\n" +
 	"\n" +
 	"request_id\x18\x01 \x01(\tR\trequestId\x12%\n" +
 	"\x0erequest_origin\x18\x02 \x01(\tR\rrequestOrigin\x12!\n" +
-	"\frequest_path\x18\x03 \x01(\tR\vrequestPath\x12\x1c\n" +
+	"\frequest_path\x18\x03 \x01(\tR\vrequestPath\x12\x1d\n" +
+	"\n" +
+	"ip_address\x18\x04 \x01(\tR\tipAddress\x12\x1c\n" +
 	"\auser_id\x18\x05 \x01(\x05H\x00R\x06userId\x88\x01\x01\x12\x1f\n" +
 	"\busername\x18\x06 \x01(\tH\x01R\busername\x88\x01\x01\x12 \n" +
 	"\tuser_type\x18\a \x01(\x05H\x02R\buserType\x88\x01\x01B\n" +

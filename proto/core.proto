@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-// Version bump: v0.0.19
-
 import "google/protobuf/timestamp.proto";
 
 package core;
