@@ -2,6 +2,7 @@ package logger
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"github.com/elastic/go-elasticsearch"
@@ -12,14 +13,14 @@ var (
 	elasticClient *elasticsearch.Client
 )
 
-func LogTrxElasticsearch(index string, entry TrxEntry) error {
+func LogTrxElasticsearch(ctx context.Context, entry TrxEntry) error {
 	data, err := json.Marshal(entry)
 	if err != nil {
 		return err
 	}
 
 	res, err := elasticClient.Index(
-		index,
+		trxIndexName,
 		bytes.NewReader(data),
 		elasticClient.Index.WithDocumentType("_doc"),
 	)
@@ -29,7 +30,7 @@ func LogTrxElasticsearch(index string, entry TrxEntry) error {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			Error("Error closing response body: ", err)
+			fmt.Println(fmt.Sprintf("Error closing response body: %s", err))
 		}
 	}(res.Body)
 
@@ -39,7 +40,7 @@ func LogTrxElasticsearch(index string, entry TrxEntry) error {
 	return nil
 }
 
-func LogElasticsearch(index string, entry LogEntry) error {
+func LogElasticsearch(ctx context.Context, index string, entry LogEntry) error {
 	data, err := json.Marshal(entry)
 	if err != nil {
 		return err
@@ -56,7 +57,7 @@ func LogElasticsearch(index string, entry LogEntry) error {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			Error("Error closing response body: ", err)
+			fmt.Println(fmt.Sprintf("Error closing response body: %s", err))
 		}
 	}(res.Body)
 

@@ -19,6 +19,7 @@ var (
 	warnIndexName  string
 	errorIndexName string
 	fatalIndexName string
+	trxIndexName   string
 )
 
 func Init(cfg LoggerConfig) {
@@ -44,21 +45,26 @@ func Init(cfg LoggerConfig) {
 	warnIndexName = "warn-" + cfg.ServiceName
 	errorIndexName = "error-" + cfg.ServiceName
 	fatalIndexName = "fatal-" + cfg.ServiceName
+	trxIndexName = "trx-" + cfg.ServiceName
+}
+
+func newLogEntry(ctx context.Context, logType string, args ...interface{}) LogEntry {
+	return LogEntry{
+		Timestamp: time.Now(),
+		UserId:    coreContext.GetUserId(ctx),
+		Username:  coreContext.GetKey(ctx, coreContext.KeyUsername),
+		RequestId: coreContext.GetKeyOrEmpty(ctx, coreContext.KeyRequestId),
+		Type:      logType,
+		Message:   fmt.Sprint(args...),
+	}
 }
 
 func Debug(ctx context.Context, args ...interface{}) {
 	l.Debugln(args...)
+	entry := newLogEntry(ctx, "DEBUG", args...)
 	go func() {
-
-		entry := LogEntry{
-			Timestamp: time.Now(),
-			UserId:    coreContext.GetUserId(ctx),
-			Username:  coreContext.GetKey(ctx, coreContext.KeyUsername),
-			RequestId: coreContext.GetKeyOrEmpty(ctx, coreContext.KeyRequestId),
-			Type:      "DEBUG",
-			Message:   fmt.Sprint(args...),
-		}
-		if err := LogElasticsearch(debugIndexName, entry); err != nil {
+		ctxBg := context.Background()
+		if err := LogElasticsearch(ctxBg, debugIndexName, entry); err != nil {
 			l.Error("Failed to log to Elasticsearch: ", err)
 		}
 	}()
@@ -66,17 +72,10 @@ func Debug(ctx context.Context, args ...interface{}) {
 
 func Warn(ctx context.Context, args ...interface{}) {
 	l.Warnln(args...)
+	entry := newLogEntry(ctx, "WARN", args...)
 	go func() {
-
-		entry := LogEntry{
-			Timestamp: time.Now(),
-			UserId:    coreContext.GetUserId(ctx),
-			Username:  coreContext.GetKey(ctx, coreContext.KeyUsername),
-			RequestId: coreContext.GetKeyOrEmpty(ctx, coreContext.KeyRequestId),
-			Type:      "WARN",
-			Message:   fmt.Sprint(args...),
-		}
-		if err := LogElasticsearch(warnIndexName, entry); err != nil {
+		ctxBg := context.Background()
+		if err := LogElasticsearch(ctxBg, warnIndexName, entry); err != nil {
 			l.Error("Failed to log to Elasticsearch: ", err)
 		}
 	}()
@@ -84,53 +83,33 @@ func Warn(ctx context.Context, args ...interface{}) {
 
 func Info(ctx context.Context, args ...interface{}) {
 	l.Infoln(args...)
+	entry := newLogEntry(ctx, "INFO", args...)
 	go func() {
-
-		entry := LogEntry{
-			Timestamp: time.Now(),
-			UserId:    coreContext.GetUserId(ctx),
-			Username:  coreContext.GetKey(ctx, coreContext.KeyUsername),
-			RequestId: coreContext.GetKeyOrEmpty(ctx, coreContext.KeyRequestId),
-			Type:      "INFO",
-			Message:   fmt.Sprint(args...),
-		}
-		if err := LogElasticsearch(infoIndexName, entry); err != nil {
+		ctxBg := context.Background()
+		if err := LogElasticsearch(ctxBg, infoIndexName, entry); err != nil {
 			l.Error("Failed to log to Elasticsearch: ", err)
 		}
 	}()
 }
 
-func Error(args ...interface{}) {
+func Error(ctx context.Context, args ...interface{}) {
 	l.Errorln(args...)
+	entry := newLogEntry(ctx, "ERROR", args...)
 	go func() {
-		entry := LogEntry{
-			Timestamp: time.Now(),
-			UserId:    coreContext.GetUserId(context.Background()),
-			Username:  coreContext.GetKey(context.Background(), coreContext.KeyUsername),
-			RequestId: coreContext.GetKeyOrEmpty(context.Background(), coreContext.KeyRequestId),
-			Type:      "ERROR",
-			Message:   fmt.Sprint(args...),
-		}
-		if err := LogElasticsearch(errorIndexName, entry); err != nil {
+		ctxBg := context.Background()
+		if err := LogElasticsearch(ctxBg, errorIndexName, entry); err != nil {
 			l.Error("Failed to log to Elasticsearch: ", err)
 		}
 	}()
 }
 
-func Fatal(args ...interface{}) {
+func Fatal(ctx context.Context, args ...interface{}) {
 	l.Fatalln(args...)
+	entry := newLogEntry(ctx, "FATAL", args...)
 	go func() {
-		entry := LogEntry{
-			Timestamp: time.Now(),
-			UserId:    coreContext.GetUserId(context.Background()),
-			Username:  coreContext.GetKey(context.Background(), coreContext.KeyUsername),
-			RequestId: coreContext.GetKeyOrEmpty(context.Background(), coreContext.KeyRequestId),
-			Type:      "FATAL",
-			Message:   fmt.Sprint(args...),
-		}
-		if err := LogElasticsearch(fatalIndexName, entry); err != nil {
+		ctxBg := context.Background()
+		if err := LogElasticsearch(ctxBg, fatalIndexName, entry); err != nil {
 			l.Error("Failed to log to Elasticsearch: ", err)
 		}
-		panic(fmt.Sprint(args...))
 	}()
 }

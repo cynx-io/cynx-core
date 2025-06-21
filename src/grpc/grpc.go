@@ -2,9 +2,13 @@ package grpc
 
 import (
 	"context"
+	"encoding/json"
 	core "github.com/cynxees/cynx-core/proto/gen"
+	coreContext "github.com/cynxees/cynx-core/src/context"
+	"github.com/cynxees/cynx-core/src/logger"
 	"github.com/cynxees/cynx-core/src/response"
 	"reflect"
+	"time"
 )
 
 type RequestWithBase interface {
@@ -18,29 +22,74 @@ func HandleGrpc[Req RequestWithBase, Resp response.Generic](
 	serviceFunc func(context.Context, Req, Resp) error,
 ) (Resp, error) {
 
+	ctx, err := coreContext.SetBaseRequest(ctx, req.GetBase())
+	if err != nil {
+		logger.Error(ctx, "Failed to set context base request: ", err)
+		// Continue either way
+	}
+
+	localReq := req
+	go func() {
+		reqBase := localReq.GetBase()
+		rawBody, _ := json.Marshal(req)
+		ctxBg := context.Background()
+		err := logger.LogTrxElasticsearch(ctxBg, logger.TrxEntry{
+			Timestamp:     time.Now(),
+			UserId:        reqBase.UserId,
+			Username:      reqBase.Username,
+			RequestId:     reqBase.RequestId,
+			RequestOrigin: reqBase.RequestOrigin,
+			Endpoint:      reqBase.RequestPath,
+			Type:          "REQUEST",
+			Body:          rawBody,
+		})
+		if err != nil {
+			logger.Error(ctxBg, "Failed to log transaction to Elasticsearch: ", err)
+		}
+	}()
+
 	resp := newResponse[Resp]()
-	base := setProtoBase(resp)
+	baseResp := setProtoBaseResponse(resp)
 
 	if v, ok := any(req).(interface{ ValidateAll() error }); ok {
 		if err := v.ValidateAll(); err != nil {
 
-			base.Code = "VE"
-			base.Desc += ": " + err.Error()
+			baseResp.Code = "VE"
+			baseResp.Desc += ": " + err.Error()
 
 			return resp, nil
 		}
 	}
 
-	err := serviceFunc(ctx, req, resp)
-
+	err = serviceFunc(ctx, req, resp)
 	if err != nil {
-		base.Desc += ": " + err.Error()
+		baseResp.Desc += ": " + err.Error()
 	}
+
+	localResp := resp
+	go func() {
+		reqBase := localReq.GetBase()
+		rawBody, _ := json.Marshal(localResp)
+		ctxBg := context.Background()
+		err := logger.LogTrxElasticsearch(ctxBg, logger.TrxEntry{
+			Timestamp:     time.Now(),
+			UserId:        reqBase.UserId,
+			Username:      reqBase.Username,
+			RequestId:     reqBase.RequestId,
+			RequestOrigin: reqBase.RequestOrigin,
+			Endpoint:      reqBase.RequestPath,
+			Type:          "RESPONSE",
+			Body:          rawBody,
+		})
+		if err != nil {
+			logger.Error(ctxBg, "Failed to log transaction to Elasticsearch: ", err)
+		}
+	}()
 
 	return resp, nil
 }
 
-func setProtoBase(resp any) *core.BaseResponse {
+func setProtoBaseResponse(resp any) *core.BaseResponse {
 	v := reflect.ValueOf(resp)
 	if v.Kind() == reflect.Pointer {
 		v = v.Elem()
