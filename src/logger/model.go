@@ -23,7 +23,7 @@ type TrxEntry struct {
 	Host          string          `json:"host"`          // e.g. api.myservice.com
 	Referer       string          `json:"referer,omitempty"`
 	UserAgent     string          `json:"userAgent,omitempty"` // browser or bot details
-	Type          string          `json:"type,omitempty"`      // e.g. "request", "response"
+	Type          string          `json:"types,omitempty"`     // e.g. "request", "response"
 	Body          json.RawMessage `json:"body,omitempty"`      // request or response body
 }
 
@@ -32,6 +32,6 @@ type LogEntry struct {
 	UserId    *int32    `json:"userId"`
 	Username  *string   `json:"username"`
 	RequestId string    `json:"requestId"`
-	Type      string    `json:"type,omitempty"`    // e.g. "debug", "warn", "error", "info"
+	Type      string    `json:"types,omitempty"`   // e.g. "debug", "warn", "error", "info"
 	Message   string    `json:"message,omitempty"` // message
 }
