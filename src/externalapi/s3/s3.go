@@ -2,9 +2,6 @@ package s3
 
 import (
 	"context"
-	"errors"
-	"fmt"
-	"github.com/aws/smithy-go"
 	"log"
 	"time"
 
@@ -64,11 +61,7 @@ func CheckObjectExists(ctx context.Context, bucket, key string) (bool, error) {
 	})
 
 	if err != nil {
-		var apiErr smithy.APIError
-		if errors.As(err, &apiErr) && apiErr.ErrorCode() == "NotFound" {
-			return false, nil
-		}
-		return false, fmt.Errorf("failed to check object: %w", err)
+		return false, err
 	}
 
 	return true, nil
