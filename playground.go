@@ -1,12 +1,43 @@
 package main
 
 import (
+	"context"
 	"fmt"
+	"github.com/cynxees/cynx-core/src/externalapi/s3"
 	"math"
 	"strconv"
 )
 
 func main() {
+	fmt.Println("Starting the program...")
+
+	s3.Init(context.Background(), s3.InitConfig{
+		Region:          "",
+		AccessKeyID:     "",
+		SecretAccessKey: "",
+	})
+
+	exist, err := s3.CheckObjectExists(context.Background(), "cynx-quiz", "test/test.png")
+	if err != nil {
+		fmt.Println("Error checking object existence:", err)
+		return
+	}
+
+	panic(exist)
+	return
+
+	//
+	//url, err := s3.GeneratePresignedUploadURL(context.Background(), "cynx-quiz", "test/test.png", "image/png", 60*time.Hour)
+	//if err != nil {
+	//	fmt.Println("Error generating presigned URL:", err)
+	//	return
+	//}
+
+	//fmt.Println("Presigned URL:", url)
+	return
+}
+
+func main1() {
 
 	ans := "2020"
 	correct := "2025"

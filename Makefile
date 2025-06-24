@@ -12,11 +12,11 @@ proto:
 	buf generate
 
 
-TAG := v0.0.25
-COMMIT_MSG := "ctx type user"
+TAG := v0.0.26
+COMMIT_MSG := "s3"
 
 .PHONY: publish
-publish: proto
+publish:
 	git add .
 	git commit -m $(COMMIT_MSG)
 	git push origin main
