@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.27
-COMMIT_MSG := "s3"
+TAG := v0.0.28
+COMMIT_MSG := "essential entity"
 
 .PHONY: publish
 publish:
