@@ -43,7 +43,7 @@ func SetupContext(ctx context.Context, req RequestWithBase) context.Context {
 	if baseReq.UserType != nil {
 		ctx = SetUserType(ctx, *baseReq.UserType)
 	}
-	
+
 	return ctx
 }
 

@@ -514,3 +514,555 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = GenericResponseValidationError{}
+
+// Validate checks the field values on UploadFileRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *UploadFileRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UploadFileRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UploadFileRequestMultiError, or nil if none found.
+func (m *UploadFileRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UploadFileRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetBase()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UploadFileRequestValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UploadFileRequestValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetBase()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UploadFileRequestValidationError{
+				field:  "Base",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for Bucket
+
+	// no validation rules for Key
+
+	// no validation rules for ContentType
+
+	// no validation rules for FileData
+
+	if len(errors) > 0 {
+		return UploadFileRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// UploadFileRequestMultiError is an error wrapping multiple validation errors
+// returned by UploadFileRequest.ValidateAll() if the designated constraints
+// aren't met.
+type UploadFileRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UploadFileRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UploadFileRequestMultiError) AllErrors() []error { return m }
+
+// UploadFileRequestValidationError is the validation error returned by
+// UploadFileRequest.Validate if the designated constraints aren't met.
+type UploadFileRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UploadFileRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UploadFileRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UploadFileRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UploadFileRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UploadFileRequestValidationError) ErrorName() string {
+	return "UploadFileRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UploadFileRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUploadFileRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UploadFileRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UploadFileRequestValidationError{}
+
+// Validate checks the field values on UploadFileResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *UploadFileResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UploadFileResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UploadFileResponseMultiError, or nil if none found.
+func (m *UploadFileResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UploadFileResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetBase()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UploadFileResponseValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UploadFileResponseValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetBase()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UploadFileResponseValidationError{
+				field:  "Base",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for Bucket
+
+	// no validation rules for Key
+
+	// no validation rules for Location
+
+	// no validation rules for Etag
+
+	if len(errors) > 0 {
+		return UploadFileResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// UploadFileResponseMultiError is an error wrapping multiple validation errors
+// returned by UploadFileResponse.ValidateAll() if the designated constraints
+// aren't met.
+type UploadFileResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UploadFileResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UploadFileResponseMultiError) AllErrors() []error { return m }
+
+// UploadFileResponseValidationError is the validation error returned by
+// UploadFileResponse.Validate if the designated constraints aren't met.
+type UploadFileResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UploadFileResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UploadFileResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UploadFileResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UploadFileResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UploadFileResponseValidationError) ErrorName() string {
+	return "UploadFileResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UploadFileResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUploadFileResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UploadFileResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UploadFileResponseValidationError{}
+
+// Validate checks the field values on GeneratePresignedURLRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GeneratePresignedURLRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GeneratePresignedURLRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GeneratePresignedURLRequestMultiError, or nil if none found.
+func (m *GeneratePresignedURLRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GeneratePresignedURLRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetBase()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, GeneratePresignedURLRequestValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, GeneratePresignedURLRequestValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetBase()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return GeneratePresignedURLRequestValidationError{
+				field:  "Base",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for Bucket
+
+	// no validation rules for Key
+
+	// no validation rules for ContentType
+
+	// no validation rules for ExpiresInSeconds
+
+	if len(errors) > 0 {
+		return GeneratePresignedURLRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GeneratePresignedURLRequestMultiError is an error wrapping multiple
+// validation errors returned by GeneratePresignedURLRequest.ValidateAll() if
+// the designated constraints aren't met.
+type GeneratePresignedURLRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GeneratePresignedURLRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GeneratePresignedURLRequestMultiError) AllErrors() []error { return m }
+
+// GeneratePresignedURLRequestValidationError is the validation error returned
+// by GeneratePresignedURLRequest.Validate if the designated constraints
+// aren't met.
+type GeneratePresignedURLRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GeneratePresignedURLRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GeneratePresignedURLRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GeneratePresignedURLRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GeneratePresignedURLRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GeneratePresignedURLRequestValidationError) ErrorName() string {
+	return "GeneratePresignedURLRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GeneratePresignedURLRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGeneratePresignedURLRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GeneratePresignedURLRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GeneratePresignedURLRequestValidationError{}
+
+// Validate checks the field values on GeneratePresignedURLResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GeneratePresignedURLResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GeneratePresignedURLResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GeneratePresignedURLResponseMultiError, or nil if none found.
+func (m *GeneratePresignedURLResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GeneratePresignedURLResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetBase()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, GeneratePresignedURLResponseValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, GeneratePresignedURLResponseValidationError{
+					field:  "Base",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetBase()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return GeneratePresignedURLResponseValidationError{
+				field:  "Base",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for UploadUrl
+
+	if len(errors) > 0 {
+		return GeneratePresignedURLResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// GeneratePresignedURLResponseMultiError is an error wrapping multiple
+// validation errors returned by GeneratePresignedURLResponse.ValidateAll() if
+// the designated constraints aren't met.
+type GeneratePresignedURLResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GeneratePresignedURLResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GeneratePresignedURLResponseMultiError) AllErrors() []error { return m }
+
+// GeneratePresignedURLResponseValidationError is the validation error returned
+// by GeneratePresignedURLResponse.Validate if the designated constraints
+// aren't met.
+type GeneratePresignedURLResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GeneratePresignedURLResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GeneratePresignedURLResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GeneratePresignedURLResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GeneratePresignedURLResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GeneratePresignedURLResponseValidationError) ErrorName() string {
+	return "GeneratePresignedURLResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GeneratePresignedURLResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGeneratePresignedURLResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GeneratePresignedURLResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GeneratePresignedURLResponseValidationError{}

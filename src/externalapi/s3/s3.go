@@ -1,7 +1,9 @@
 package s3
 
 import (
+	"bytes"
 	"context"
+	"io"
 	"log"
 	"time"
 
@@ -65,4 +67,60 @@ func CheckObjectExists(ctx context.Context, bucket, key string) (bool, error) {
 	}
 
 	return true, nil
+}
+
+func UploadFile(ctx context.Context, bucket, key string, contentType string, fileData []byte) (*UploadResult, error) {
+	params := &s3.PutObjectInput{
+		Bucket:      aws.String(bucket),
+		Key:         aws.String(key),
+		Body:        bytes.NewReader(fileData),
+		ContentType: aws.String(contentType),
+	}
+
+	result, err := client.PutObject(ctx, params)
+	if err != nil {
+		return nil, err
+	}
+
+	return &UploadResult{
+		Bucket:   bucket,
+		Key:      key,
+		Location: "https://" + bucket + ".s3.amazonaws.com/" + key,
+		ETag:     *result.ETag,
+	}, nil
+}
+
+func UploadFileFromReader(ctx context.Context, bucket, key string, contentType string, reader io.Reader) (*UploadResult, error) {
+	params := &s3.PutObjectInput{
+		Bucket:      aws.String(bucket),
+		Key:         aws.String(key),
+		Body:        reader,
+		ContentType: aws.String(contentType),
+	}
+
+	result, err := client.PutObject(ctx, params)
+	if err != nil {
+		return nil, err
+	}
+
+	return &UploadResult{
+		Bucket:   bucket,
+		Key:      key,
+		Location: "https://" + bucket + ".s3.amazonaws.com/" + key,
+		ETag:     *result.ETag,
+	}, nil
+}
+
+func DeleteObject(ctx context.Context, bucket, key string) error {
+	params := &s3.DeleteObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	}
+
+	_, err := client.DeleteObject(ctx, params)
+	return err
+}
+
+func GetObjectURL(bucket, key string) string {
+	return "https://" + bucket + ".s3.amazonaws.com/" + key
 }

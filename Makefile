@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.29
-COMMIT_MSG := "struct helper"
+TAG := v0.0.30
+COMMIT_MSG := "s3"
 
 .PHONY: publish
 publish:

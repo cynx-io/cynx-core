@@ -254,6 +254,286 @@ func (x *GenericResponse) GetBase() *BaseResponse {
 	return nil
 }
 
+type UploadFileRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Base          *BaseRequest           `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	Bucket        string                 `protobuf:"bytes,2,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	Key           string                 `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	ContentType   string                 `protobuf:"bytes,4,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	FileData      []byte                 `protobuf:"bytes,5,opt,name=file_data,json=fileData,proto3" json:"file_data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadFileRequest) Reset() {
+	*x = UploadFileRequest{}
+	mi := &file_core_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadFileRequest) ProtoMessage() {}
+
+func (x *UploadFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadFileRequest.ProtoReflect.Descriptor instead.
+func (*UploadFileRequest) Descriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UploadFileRequest) GetBase() *BaseRequest {
+	if x != nil {
+		return x.Base
+	}
+	return nil
+}
+
+func (x *UploadFileRequest) GetBucket() string {
+	if x != nil {
+		return x.Bucket
+	}
+	return ""
+}
+
+func (x *UploadFileRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *UploadFileRequest) GetContentType() string {
+	if x != nil {
+		return x.ContentType
+	}
+	return ""
+}
+
+func (x *UploadFileRequest) GetFileData() []byte {
+	if x != nil {
+		return x.FileData
+	}
+	return nil
+}
+
+type UploadFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Base          *BaseResponse          `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	Bucket        string                 `protobuf:"bytes,2,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	Key           string                 `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	Location      string                 `protobuf:"bytes,4,opt,name=location,proto3" json:"location,omitempty"`
+	Etag          string                 `protobuf:"bytes,5,opt,name=etag,proto3" json:"etag,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadFileResponse) Reset() {
+	*x = UploadFileResponse{}
+	mi := &file_core_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadFileResponse) ProtoMessage() {}
+
+func (x *UploadFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadFileResponse.ProtoReflect.Descriptor instead.
+func (*UploadFileResponse) Descriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UploadFileResponse) GetBase() *BaseResponse {
+	if x != nil {
+		return x.Base
+	}
+	return nil
+}
+
+func (x *UploadFileResponse) GetBucket() string {
+	if x != nil {
+		return x.Bucket
+	}
+	return ""
+}
+
+func (x *UploadFileResponse) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *UploadFileResponse) GetLocation() string {
+	if x != nil {
+		return x.Location
+	}
+	return ""
+}
+
+func (x *UploadFileResponse) GetEtag() string {
+	if x != nil {
+		return x.Etag
+	}
+	return ""
+}
+
+type GeneratePresignedURLRequest struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Base             *BaseRequest           `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	Bucket           string                 `protobuf:"bytes,2,opt,name=bucket,proto3" json:"bucket,omitempty"`
+	Key              string                 `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	ContentType      string                 `protobuf:"bytes,4,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	ExpiresInSeconds int64                  `protobuf:"varint,5,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GeneratePresignedURLRequest) Reset() {
+	*x = GeneratePresignedURLRequest{}
+	mi := &file_core_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GeneratePresignedURLRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GeneratePresignedURLRequest) ProtoMessage() {}
+
+func (x *GeneratePresignedURLRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_core_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GeneratePresignedURLRequest.ProtoReflect.Descriptor instead.
+func (*GeneratePresignedURLRequest) Descriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GeneratePresignedURLRequest) GetBase() *BaseRequest {
+	if x != nil {
+		return x.Base
+	}
+	return nil
+}
+
+func (x *GeneratePresignedURLRequest) GetBucket() string {
+	if x != nil {
+		return x.Bucket
+	}
+	return ""
+}
+
+func (x *GeneratePresignedURLRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *GeneratePresignedURLRequest) GetContentType() string {
+	if x != nil {
+		return x.ContentType
+	}
+	return ""
+}
+
+func (x *GeneratePresignedURLRequest) GetExpiresInSeconds() int64 {
+	if x != nil {
+		return x.ExpiresInSeconds
+	}
+	return 0
+}
+
+type GeneratePresignedURLResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Base          *BaseResponse          `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
+	UploadUrl     string                 `protobuf:"bytes,2,opt,name=upload_url,json=uploadUrl,proto3" json:"upload_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GeneratePresignedURLResponse) Reset() {
+	*x = GeneratePresignedURLResponse{}
+	mi := &file_core_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GeneratePresignedURLResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GeneratePresignedURLResponse) ProtoMessage() {}
+
+func (x *GeneratePresignedURLResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_core_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GeneratePresignedURLResponse.ProtoReflect.Descriptor instead.
+func (*GeneratePresignedURLResponse) Descriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GeneratePresignedURLResponse) GetBase() *BaseResponse {
+	if x != nil {
+		return x.Base
+	}
+	return nil
+}
+
+func (x *GeneratePresignedURLResponse) GetUploadUrl() string {
+	if x != nil {
+		return x.UploadUrl
+	}
+	return ""
+}
+
 var File_core_proto protoreflect.FileDescriptor
 
 const file_core_proto_rawDesc = "" +
@@ -281,7 +561,33 @@ const file_core_proto_rawDesc = "" +
 	"\x0eGenericRequest\x12%\n" +
 	"\x04base\x18\x01 \x01(\v2\x11.core.BaseRequestR\x04base\"9\n" +
 	"\x0fGenericResponse\x12&\n" +
-	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04baseB-Z+github.com/cynxees/cynx-core/proto/gen;coreb\x06proto3"
+	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04base\"\xa4\x01\n" +
+	"\x11UploadFileRequest\x12%\n" +
+	"\x04base\x18\x01 \x01(\v2\x11.core.BaseRequestR\x04base\x12\x16\n" +
+	"\x06bucket\x18\x02 \x01(\tR\x06bucket\x12\x10\n" +
+	"\x03key\x18\x03 \x01(\tR\x03key\x12!\n" +
+	"\fcontent_type\x18\x04 \x01(\tR\vcontentType\x12\x1b\n" +
+	"\tfile_data\x18\x05 \x01(\fR\bfileData\"\x96\x01\n" +
+	"\x12UploadFileResponse\x12&\n" +
+	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04base\x12\x16\n" +
+	"\x06bucket\x18\x02 \x01(\tR\x06bucket\x12\x10\n" +
+	"\x03key\x18\x03 \x01(\tR\x03key\x12\x1a\n" +
+	"\blocation\x18\x04 \x01(\tR\blocation\x12\x12\n" +
+	"\x04etag\x18\x05 \x01(\tR\x04etag\"\xbf\x01\n" +
+	"\x1bGeneratePresignedURLRequest\x12%\n" +
+	"\x04base\x18\x01 \x01(\v2\x11.core.BaseRequestR\x04base\x12\x16\n" +
+	"\x06bucket\x18\x02 \x01(\tR\x06bucket\x12\x10\n" +
+	"\x03key\x18\x03 \x01(\tR\x03key\x12!\n" +
+	"\fcontent_type\x18\x04 \x01(\tR\vcontentType\x12,\n" +
+	"\x12expires_in_seconds\x18\x05 \x01(\x03R\x10expiresInSeconds\"e\n" +
+	"\x1cGeneratePresignedURLResponse\x12&\n" +
+	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04base\x12\x1d\n" +
+	"\n" +
+	"upload_url\x18\x02 \x01(\tR\tuploadUrl2\xad\x01\n" +
+	"\vFileService\x12?\n" +
+	"\n" +
+	"UploadFile\x12\x17.core.UploadFileRequest\x1a\x18.core.UploadFileResponse\x12]\n" +
+	"\x14GeneratePresignedURL\x12!.core.GeneratePresignedURLRequest\x1a\".core.GeneratePresignedURLResponseB-Z+github.com/cynxees/cynx-core/proto/gen;coreb\x06proto3"
 
 var (
 	file_core_proto_rawDescOnce sync.Once
@@ -295,21 +601,33 @@ func file_core_proto_rawDescGZIP() []byte {
 	return file_core_proto_rawDescData
 }
 
-var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_core_proto_goTypes = []any{
-	(*BaseRequest)(nil),     // 0: core.BaseRequest
-	(*BaseResponse)(nil),    // 1: core.BaseResponse
-	(*GenericRequest)(nil),  // 2: core.GenericRequest
-	(*GenericResponse)(nil), // 3: core.GenericResponse
+	(*BaseRequest)(nil),                  // 0: core.BaseRequest
+	(*BaseResponse)(nil),                 // 1: core.BaseResponse
+	(*GenericRequest)(nil),               // 2: core.GenericRequest
+	(*GenericResponse)(nil),              // 3: core.GenericResponse
+	(*UploadFileRequest)(nil),            // 4: core.UploadFileRequest
+	(*UploadFileResponse)(nil),           // 5: core.UploadFileResponse
+	(*GeneratePresignedURLRequest)(nil),  // 6: core.GeneratePresignedURLRequest
+	(*GeneratePresignedURLResponse)(nil), // 7: core.GeneratePresignedURLResponse
 }
 var file_core_proto_depIdxs = []int32{
 	0, // 0: core.GenericRequest.base:type_name -> core.BaseRequest
 	1, // 1: core.GenericResponse.base:type_name -> core.BaseResponse
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 2: core.UploadFileRequest.base:type_name -> core.BaseRequest
+	1, // 3: core.UploadFileResponse.base:type_name -> core.BaseResponse
+	0, // 4: core.GeneratePresignedURLRequest.base:type_name -> core.BaseRequest
+	1, // 5: core.GeneratePresignedURLResponse.base:type_name -> core.BaseResponse
+	4, // 6: core.FileService.UploadFile:input_type -> core.UploadFileRequest
+	6, // 7: core.FileService.GeneratePresignedURL:input_type -> core.GeneratePresignedURLRequest
+	5, // 8: core.FileService.UploadFile:output_type -> core.UploadFileResponse
+	7, // 9: core.FileService.GeneratePresignedURL:output_type -> core.GeneratePresignedURLResponse
+	8, // [8:10] is the sub-list for method output_type
+	6, // [6:8] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_core_proto_init() }
@@ -324,9 +642,9 @@ func file_core_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_proto_rawDesc), len(file_core_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_core_proto_goTypes,
 		DependencyIndexes: file_core_proto_depIdxs,

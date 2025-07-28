@@ -2,8 +2,8 @@
 // @generated from file core.proto (package core, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
-import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -11,7 +11,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file core.proto.
  */
 export const file_core: GenFile = /*@__PURE__*/
-  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIs8BCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRISCgppcF9hZGRyZXNzGAQgASgJEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoBUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIioKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZUItWitnaXRodWIuY29tL2N5bnhlZXMvY3lueC1jb3JlL3Byb3RvL2dlbjtjb3JlYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIs8BCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRISCgppcF9hZGRyZXNzGAQgASgJEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoBUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIioKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZSJ6ChFVcGxvYWRGaWxlUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIRCglmaWxlX2RhdGEYBSABKAwicwoSVXBsb2FkRmlsZVJlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZRIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhAKCGxvY2F0aW9uGAQgASgJEgwKBGV0YWcYBSABKAkijQEKG0dlbmVyYXRlUHJlc2lnbmVkVVJMUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIaChJleHBpcmVzX2luX3NlY29uZHMYBSABKAMiVAocR2VuZXJhdGVQcmVzaWduZWRVUkxSZXNwb25zZRIgCgRiYXNlGAEgASgLMhIuY29yZS5CYXNlUmVzcG9uc2USEgoKdXBsb2FkX3VybBgCIAEoCTKtAQoLRmlsZVNlcnZpY2USPwoKVXBsb2FkRmlsZRIXLmNvcmUuVXBsb2FkRmlsZVJlcXVlc3QaGC5jb3JlLlVwbG9hZEZpbGVSZXNwb25zZRJdChRHZW5lcmF0ZVByZXNpZ25lZFVSTBIhLmNvcmUuR2VuZXJhdGVQcmVzaWduZWRVUkxSZXF1ZXN0GiIuY29yZS5HZW5lcmF0ZVByZXNpZ25lZFVSTFJlc3BvbnNlQi1aK2dpdGh1Yi5jb20vY3lueGVlcy9jeW54LWNvcmUvcHJvdG8vZ2VuO2NvcmViBnByb3RvMw", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message core.BaseRequest
@@ -117,4 +117,160 @@ export type GenericResponse = Message<"core.GenericResponse"> & {
  */
 export const GenericResponseSchema: GenMessage<GenericResponse> = /*@__PURE__*/
   messageDesc(file_core, 3);
+
+/**
+ * @generated from message core.UploadFileRequest
+ */
+export type UploadFileRequest = Message<"core.UploadFileRequest"> & {
+  /**
+   * @generated from field: core.BaseRequest base = 1;
+   */
+  base?: BaseRequest;
+
+  /**
+   * @generated from field: string bucket = 2;
+   */
+  bucket: string;
+
+  /**
+   * @generated from field: string key = 3;
+   */
+  key: string;
+
+  /**
+   * @generated from field: string content_type = 4;
+   */
+  contentType: string;
+
+  /**
+   * @generated from field: bytes file_data = 5;
+   */
+  fileData: Uint8Array;
+};
+
+/**
+ * Describes the message core.UploadFileRequest.
+ * Use `create(UploadFileRequestSchema)` to create a new message.
+ */
+export const UploadFileRequestSchema: GenMessage<UploadFileRequest> = /*@__PURE__*/
+  messageDesc(file_core, 4);
+
+/**
+ * @generated from message core.UploadFileResponse
+ */
+export type UploadFileResponse = Message<"core.UploadFileResponse"> & {
+  /**
+   * @generated from field: core.BaseResponse base = 1;
+   */
+  base?: BaseResponse;
+
+  /**
+   * @generated from field: string bucket = 2;
+   */
+  bucket: string;
+
+  /**
+   * @generated from field: string key = 3;
+   */
+  key: string;
+
+  /**
+   * @generated from field: string location = 4;
+   */
+  location: string;
+
+  /**
+   * @generated from field: string etag = 5;
+   */
+  etag: string;
+};
+
+/**
+ * Describes the message core.UploadFileResponse.
+ * Use `create(UploadFileResponseSchema)` to create a new message.
+ */
+export const UploadFileResponseSchema: GenMessage<UploadFileResponse> = /*@__PURE__*/
+  messageDesc(file_core, 5);
+
+/**
+ * @generated from message core.GeneratePresignedURLRequest
+ */
+export type GeneratePresignedURLRequest = Message<"core.GeneratePresignedURLRequest"> & {
+  /**
+   * @generated from field: core.BaseRequest base = 1;
+   */
+  base?: BaseRequest;
+
+  /**
+   * @generated from field: string bucket = 2;
+   */
+  bucket: string;
+
+  /**
+   * @generated from field: string key = 3;
+   */
+  key: string;
+
+  /**
+   * @generated from field: string content_type = 4;
+   */
+  contentType: string;
+
+  /**
+   * @generated from field: int64 expires_in_seconds = 5;
+   */
+  expiresInSeconds: bigint;
+};
+
+/**
+ * Describes the message core.GeneratePresignedURLRequest.
+ * Use `create(GeneratePresignedURLRequestSchema)` to create a new message.
+ */
+export const GeneratePresignedURLRequestSchema: GenMessage<GeneratePresignedURLRequest> = /*@__PURE__*/
+  messageDesc(file_core, 6);
+
+/**
+ * @generated from message core.GeneratePresignedURLResponse
+ */
+export type GeneratePresignedURLResponse = Message<"core.GeneratePresignedURLResponse"> & {
+  /**
+   * @generated from field: core.BaseResponse base = 1;
+   */
+  base?: BaseResponse;
+
+  /**
+   * @generated from field: string upload_url = 2;
+   */
+  uploadUrl: string;
+};
+
+/**
+ * Describes the message core.GeneratePresignedURLResponse.
+ * Use `create(GeneratePresignedURLResponseSchema)` to create a new message.
+ */
+export const GeneratePresignedURLResponseSchema: GenMessage<GeneratePresignedURLResponse> = /*@__PURE__*/
+  messageDesc(file_core, 7);
+
+/**
+ * @generated from service core.FileService
+ */
+export const FileService: GenService<{
+  /**
+   * @generated from rpc core.FileService.UploadFile
+   */
+  uploadFile: {
+    methodKind: "unary";
+    input: typeof UploadFileRequestSchema;
+    output: typeof UploadFileResponseSchema;
+  },
+  /**
+   * @generated from rpc core.FileService.GeneratePresignedURL
+   */
+  generatePresignedURL: {
+    methodKind: "unary";
+    input: typeof GeneratePresignedURLRequestSchema;
+    output: typeof GeneratePresignedURLResponseSchema;
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_core, 0);
 

@@ -7,9 +7,9 @@ import (
 )
 
 type LoggerConfig struct {
-	Level            logrus.Level
-	ElasticsearchURL []string
 	ServiceName      string
+	ElasticsearchURL []string
+	Level            logrus.Level
 }
 
 type TrxEntry struct {

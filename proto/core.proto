@@ -31,3 +31,37 @@ message GenericRequest {
 message GenericResponse {
   BaseResponse base = 1;
 }
+
+message UploadFileRequest {
+  BaseRequest base = 1;
+  string bucket = 2;
+  string key = 3;
+  string content_type = 4;
+  bytes file_data = 5;
+}
+
+message UploadFileResponse {
+  BaseResponse base = 1;
+  string bucket = 2;
+  string key = 3;
+  string location = 4;
+  string etag = 5;
+}
+
+message GeneratePresignedURLRequest {
+  BaseRequest base = 1;
+  string bucket = 2;
+  string key = 3;
+  string content_type = 4;
+  int64 expires_in_seconds = 5;
+}
+
+message GeneratePresignedURLResponse {
+  BaseResponse base = 1;
+  string upload_url = 2;
+}
+
+service FileService {
+  rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+  rpc GeneratePresignedURL(GeneratePresignedURLRequest) returns (GeneratePresignedURLResponse);
+}
