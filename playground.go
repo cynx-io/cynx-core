@@ -16,7 +16,7 @@ func main() {
 
 	// Initialize S3 (you would normally load these from config)
 	s3.Init(context.Background(), s3.InitConfig{
-		Region:          "us-east-1", // example region
+		Region:          "ap-southeast-3", // Southeast Asia (Jakarta)
 		AccessKeyID:     "YOUR_ACCESS_KEY",
 		SecretAccessKey: "YOUR_SECRET_KEY",
 	})
@@ -27,9 +27,9 @@ func main() {
 		Base: &core.BaseRequest{
 			RequestId: "demo-1",
 		},
-		Bucket:            "your-bucket",
-		Key:               "uploads/demo-file.txt",
-		ContentType:       "text/plain",
+		Bucket:            "cynx-host",
+		Key:               "lxc/templates/lxc-template-11-Ubuntu+22.04-20250729-025619.tar.gz",
+		ContentType:       "application/gzip",
 		ExpiresInSeconds:  3600, // 1 hour
 	}
 	
@@ -53,9 +53,9 @@ func main() {
 		Base: &core.BaseRequest{
 			RequestId: "demo-2",
 		},
-		Bucket:      "your-bucket",
-		Key:         "uploads/direct-upload.txt",
-		ContentType: "text/plain",
+		Bucket:      "cynx-host",
+		Key:         "lxc/templates/test-upload.tar.gz",
+		ContentType: "application/gzip",
 		FileData:    sampleData,
 	}
 	

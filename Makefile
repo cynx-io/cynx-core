@@ -12,7 +12,7 @@ proto:
 	buf generate
 
 
-TAG := v0.0.30
+TAG := v0.0.31
 COMMIT_MSG := "s3"
 
 .PHONY: publish

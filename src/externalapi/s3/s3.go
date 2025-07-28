@@ -16,10 +16,12 @@ import (
 var (
 	client        *s3.Client
 	presignClient *s3.PresignClient
+	cfg           aws.Config
 )
 
 func Init(ctx context.Context, initCfg InitConfig) {
-	cfg, err := config.LoadDefaultConfig(
+	var err error
+	cfg, err = config.LoadDefaultConfig(
 		ctx,
 		config.WithRegion(initCfg.Region),
 		config.WithCredentialsProvider(credentials.StaticCredentialsProvider{
@@ -85,7 +87,7 @@ func UploadFile(ctx context.Context, bucket, key string, contentType string, fil
 	return &UploadResult{
 		Bucket:   bucket,
 		Key:      key,
-		Location: "https://" + bucket + ".s3.amazonaws.com/" + key,
+		Location: GetObjectURL(bucket, key),
 		ETag:     *result.ETag,
 	}, nil
 }
@@ -106,7 +108,7 @@ func UploadFileFromReader(ctx context.Context, bucket, key string, contentType s
 	return &UploadResult{
 		Bucket:   bucket,
 		Key:      key,
-		Location: "https://" + bucket + ".s3.amazonaws.com/" + key,
+		Location: GetObjectURL(bucket, key),
 		ETag:     *result.ETag,
 	}, nil
 }
@@ -122,5 +124,5 @@ func DeleteObject(ctx context.Context, bucket, key string) error {
 }
 
 func GetObjectURL(bucket, key string) string {
-	return "https://" + bucket + ".s3.amazonaws.com/" + key
+	return "https://" + bucket + ".s3." + cfg.Region + ".amazonaws.com/" + key
 }
