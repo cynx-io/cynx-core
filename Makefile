@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.28
-COMMIT_MSG := "essential entity"
+TAG := v0.0.29
+COMMIT_MSG := "struct helper"
 
 .PHONY: publish
 publish:
