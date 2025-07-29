@@ -32,7 +32,11 @@ func HandleGrpc[Req RequestWithBase, Resp response.Generic](
 	// Handle nil base request
 	baseReq := req.GetBase()
 	if baseReq == nil {
-		baseReq = &core.BaseRequest{}
+		resp := newResponse[Resp]()
+		baseResp := setProtoBaseResponse(resp)
+		baseResp.Code = "VE"
+		baseResp.Desc = "Base Request cannot be nil"
+		return resp, nil
 	}
 
 	ctx, err := coreContext.SetBaseRequest(ctx, baseReq)

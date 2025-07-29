@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.33
-COMMIT_MSG := "nil req"
+TAG := v0.0.34
+COMMIT_MSG := "nil base req"
 
 .PHONY: publish
 publish:
