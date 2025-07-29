@@ -21,8 +21,21 @@ func HandleGrpc[Req RequestWithBase, Resp response.Generic](
 	_ Resp,
 	serviceFunc func(context.Context, Req, Resp) error,
 ) (Resp, error) {
+	if any(req) == nil {
+		resp := newResponse[Resp]()
+		baseResp := setProtoBaseResponse(resp)
+		baseResp.Code = "VE"
+		baseResp.Desc = "Request cannot be nil"
+		return resp, nil
+	}
 
-	ctx, err := coreContext.SetBaseRequest(ctx, req.GetBase())
+	// Handle nil base request
+	baseReq := req.GetBase()
+	if baseReq == nil {
+		baseReq = &core.BaseRequest{}
+	}
+
+	ctx, err := coreContext.SetBaseRequest(ctx, baseReq)
 	if err != nil {
 		logger.Error(ctx, "Failed to set context base request: ", err)
 		// Continue either way
@@ -31,6 +44,9 @@ func HandleGrpc[Req RequestWithBase, Resp response.Generic](
 	localReq := req
 	go func() {
 		reqBase := localReq.GetBase()
+		if reqBase == nil {
+			reqBase = &core.BaseRequest{}
+		}
 		rawBody, _ := json.Marshal(req)
 		ctxBg := context.Background()
 		err := logger.LogTrxElasticsearch(ctxBg, logger.TrxEntry{
@@ -71,6 +87,9 @@ func HandleGrpc[Req RequestWithBase, Resp response.Generic](
 	localResp := resp
 	go func() {
 		reqBase := localReq.GetBase()
+		if reqBase == nil {
+			reqBase = &core.BaseRequest{}
+		}
 		rawBody, _ := json.Marshal(localResp)
 		ctxBg := context.Background()
 		err := logger.LogTrxElasticsearch(ctxBg, logger.TrxEntry{

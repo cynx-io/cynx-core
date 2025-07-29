@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.32
-COMMIT_MSG := "cynx-io"
+TAG := v0.0.33
+COMMIT_MSG := "nil req"
 
 .PHONY: publish
 publish:
@@ -22,4 +22,5 @@ publish:
 	git push origin main
 	git tag -a $(TAG) -m $(COMMIT_MSG)
 	git push origin $(TAG)
+	buf push --label $(TAG)
 
