@@ -1,7 +1,7 @@
 package random
 
 import (
-	"github.com/cynxees/cynx-core/src/constant"
+	"github.com/cynx-io/cynx-core/src/constant"
 	"math/rand"
 	"strings"
 )

@@ -2,7 +2,7 @@ package context
 
 import (
 	"context"
-	core "github.com/cynxees/cynx-core/proto/gen"
+	core "github.com/cynx-io/cynx-core/proto/gen"
 )
 
 func SetupContext(ctx context.Context, req RequestWithBase) context.Context {

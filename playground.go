@@ -6,9 +6,9 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/cynxees/cynx-core/proto/gen"
-	"github.com/cynxees/cynx-core/src/externalapi/s3"
-	"github.com/cynxees/cynx-core/src/helper"
+	"github.com/cynx-io/cynx-core/proto/gen"
+	"github.com/cynx-io/cynx-core/src/externalapi/s3"
+	"github.com/cynx-io/cynx-core/src/helper"
 )
 
 func main() {
@@ -27,12 +27,12 @@ func main() {
 		Base: &core.BaseRequest{
 			RequestId: "demo-1",
 		},
-		Bucket:            "cynx-host",
-		Key:               "lxc/templates/lxc-template-11-Ubuntu+22.04-20250729-025619.tar.gz",
-		ContentType:       "application/gzip",
-		ExpiresInSeconds:  3600, // 1 hour
+		Bucket:           "cynx-host",
+		Key:              "lxc/templates/lxc-template-11-Ubuntu+22.04-20250729-025619.tar.gz",
+		ContentType:      "application/gzip",
+		ExpiresInSeconds: 3600, // 1 hour
 	}
-	
+
 	var presignedResp core.GeneratePresignedURLResponse
 	err := helper.HandleGeneratePresignedURL(context.Background(), presignedReq, &presignedResp)
 	if err != nil {
@@ -48,7 +48,7 @@ func main() {
 	// Demo 2: Direct file upload
 	fmt.Println("\n=== Demo 2: Direct File Upload ===")
 	sampleData := []byte("Hello, this is a test file content!")
-	
+
 	uploadReq := &core.UploadFileRequest{
 		Base: &core.BaseRequest{
 			RequestId: "demo-2",
@@ -58,7 +58,7 @@ func main() {
 		ContentType: "application/gzip",
 		FileData:    sampleData,
 	}
-	
+
 	var uploadResp core.UploadFileResponse
 	err = helper.HandleUploadFile(context.Background(), uploadReq, &uploadResp)
 	if err != nil {

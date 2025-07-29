@@ -1,6 +1,6 @@
 package context
 
-import core "github.com/cynxees/cynx-core/proto/gen"
+import core "github.com/cynx-io/cynx-core/proto/gen"
 
 type Key string
 

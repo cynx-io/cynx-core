@@ -1,4 +1,4 @@
-module github.com/cynxees/cynx-core
+module github.com/cynx-io/cynx-core
 
 go 1.24.3
 

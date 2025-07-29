@@ -3,10 +3,10 @@ package grpc
 import (
 	"context"
 	"encoding/json"
-	core "github.com/cynxees/cynx-core/proto/gen"
-	coreContext "github.com/cynxees/cynx-core/src/context"
-	"github.com/cynxees/cynx-core/src/logger"
-	"github.com/cynxees/cynx-core/src/response"
+	core "github.com/cynx-io/cynx-core/proto/gen"
+	coreContext "github.com/cynx-io/cynx-core/src/context"
+	"github.com/cynx-io/cynx-core/src/logger"
+	"github.com/cynx-io/cynx-core/src/response"
 	"reflect"
 	"time"
 )

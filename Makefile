@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.31
-COMMIT_MSG := "s3"
+TAG := v0.0.32
+COMMIT_MSG := "cynx-io"
 
 .PHONY: publish
 publish:

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/cynxees/cynx-core/proto/gen"
-	"github.com/cynxees/cynx-core/src/externalapi/s3"
+	"github.com/cynx-io/cynx-core/proto/gen"
+	"github.com/cynx-io/cynx-core/src/externalapi/s3"
 	"google.golang.org/grpc/codes"
 )
 

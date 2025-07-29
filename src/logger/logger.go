@@ -3,7 +3,7 @@ package logger
 import (
 	"context"
 	"fmt"
-	coreContext "github.com/cynxees/cynx-core/src/context"
+	coreContext "github.com/cynx-io/cynx-core/src/context"
 	"github.com/elastic/go-elasticsearch"
 	"github.com/sirupsen/logrus"
 	"go.elastic.co/ecslogrus"

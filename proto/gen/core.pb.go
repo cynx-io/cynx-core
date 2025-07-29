@@ -587,7 +587,7 @@ const file_core_proto_rawDesc = "" +
 	"\vFileService\x12?\n" +
 	"\n" +
 	"UploadFile\x12\x17.core.UploadFileRequest\x1a\x18.core.UploadFileResponse\x12]\n" +
-	"\x14GeneratePresignedURL\x12!.core.GeneratePresignedURLRequest\x1a\".core.GeneratePresignedURLResponseB-Z+github.com/cynxees/cynx-core/proto/gen;coreb\x06proto3"
+	"\x14GeneratePresignedURL\x12!.core.GeneratePresignedURLRequest\x1a\".core.GeneratePresignedURLResponseB-Z+github.com/cynx-io/cynx-core/proto/gen;coreb\x06proto3"
 
 var (
 	file_core_proto_rawDescOnce sync.Once

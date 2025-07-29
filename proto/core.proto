@@ -4,7 +4,7 @@ import "google/protobuf/timestamp.proto";
 
 package core;
 
-option go_package = "github.com/cynxees/cynx-core/proto/gen;core";
+option go_package = "github.com/cynx-io/cynx-core/proto/gen;core";
 
 message BaseRequest {
   string request_id = 1;
