@@ -12,11 +12,11 @@ proto:
 	buf generate
 
 
-TAG := v0.0.35
-COMMIT_MSG := "ptr helper"
+TAG := v0.0.36
+COMMIT_MSG := "tech debt"
 
 .PHONY: publish
-publish:
+publish: tidy
 	git add .
 	git commit -m $(COMMIT_MSG)
 	git push origin main

@@ -30,7 +30,7 @@ func LogTrxElasticsearch(ctx context.Context, entry TrxEntry) error {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			fmt.Println(fmt.Sprintf("Error closing response body: %s", err))
+			fmt.Printf("Error closing response body: %s\n", err)
 		}
 	}(res.Body)
 
@@ -57,7 +57,7 @@ func LogElasticsearch(ctx context.Context, index string, entry LogEntry) error {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			fmt.Println(fmt.Sprintf("Error closing response body: %s", err))
+			fmt.Printf("Error closing response body: %s\n", err)
 		}
 	}(res.Body)
 

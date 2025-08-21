@@ -6,18 +6,6 @@ import (
 	"strings"
 )
 
-var adjectives = []string{
-	"Ancient", "Bold", "Creative", "Daring", "Elegant", "Fancy", "Gentle",
-	"Happy", "Icy", "Jolly", "Kind", "Lively", "Mighty", "Noble", "Odd",
-	"Peaceful", "Quick", "Royal", "Silent", "Tough", "Unique", "Vivid", "Wild", "Young", "Zesty",
-}
-
-var verbs = []string{
-	"Running", "Flying", "Jumping", "Singing", "Dancing", "Hunting",
-	"Racing", "Shining", "Glowing", "Roaring", "Sprinting", "Soaring",
-	"Climbing", "Leaping", "Whispering",
-}
-
 func RandomAnimalName(separator string) string {
 
 	animal := constant.Animals[rand.Intn(len(constant.Animals))]

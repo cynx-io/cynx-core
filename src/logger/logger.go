@@ -13,7 +13,6 @@ import (
 
 var (
 	l              *logrus.Logger
-	serviceName    string
 	debugIndexName string
 	infoIndexName  string
 	warnIndexName  string
@@ -39,7 +38,6 @@ func Init(cfg LoggerConfig) {
 	}
 
 	elasticClient = client
-	serviceName = cfg.ServiceName
 	debugIndexName = "debug-" + cfg.ServiceName
 	infoIndexName = "info-" + cfg.ServiceName
 	warnIndexName = "warn-" + cfg.ServiceName
