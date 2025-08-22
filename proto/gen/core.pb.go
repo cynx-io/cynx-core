@@ -22,6 +22,49 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ChannelType int32
+
+const (
+	ChannelType_PERINTIS_COURSE ChannelType = 0
+)
+
+// Enum value maps for ChannelType.
+var (
+	ChannelType_name = map[int32]string{
+		0: "PERINTIS_COURSE",
+	}
+	ChannelType_value = map[string]int32{
+		"PERINTIS_COURSE": 0,
+	}
+)
+
+func (x ChannelType) Enum() *ChannelType {
+	p := new(ChannelType)
+	*p = x
+	return p
+}
+
+func (x ChannelType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ChannelType) Descriptor() protoreflect.EnumDescriptor {
+	return file_core_proto_enumTypes[0].Descriptor()
+}
+
+func (ChannelType) Type() protoreflect.EnumType {
+	return &file_core_proto_enumTypes[0]
+}
+
+func (x ChannelType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ChannelType.Descriptor instead.
+func (ChannelType) EnumDescriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{0}
+}
+
 type BaseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RequestId     string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
@@ -583,11 +626,9 @@ const file_core_proto_rawDesc = "" +
 	"\x1cGeneratePresignedURLResponse\x12&\n" +
 	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04base\x12\x1d\n" +
 	"\n" +
-	"upload_url\x18\x02 \x01(\tR\tuploadUrl2\xad\x01\n" +
-	"\vFileService\x12?\n" +
-	"\n" +
-	"UploadFile\x12\x17.core.UploadFileRequest\x1a\x18.core.UploadFileResponse\x12]\n" +
-	"\x14GeneratePresignedURL\x12!.core.GeneratePresignedURLRequest\x1a\".core.GeneratePresignedURLResponseB-Z+github.com/cynx-io/cynx-core/proto/gen;coreb\x06proto3"
+	"upload_url\x18\x02 \x01(\tR\tuploadUrl*\"\n" +
+	"\vChannelType\x12\x13\n" +
+	"\x0fPERINTIS_COURSE\x10\x00B-Z+github.com/cynx-io/cynx-core/proto/gen;coreb\x06proto3"
 
 var (
 	file_core_proto_rawDescOnce sync.Once
@@ -601,30 +642,28 @@ func file_core_proto_rawDescGZIP() []byte {
 	return file_core_proto_rawDescData
 }
 
+var file_core_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_core_proto_goTypes = []any{
-	(*BaseRequest)(nil),                  // 0: core.BaseRequest
-	(*BaseResponse)(nil),                 // 1: core.BaseResponse
-	(*GenericRequest)(nil),               // 2: core.GenericRequest
-	(*GenericResponse)(nil),              // 3: core.GenericResponse
-	(*UploadFileRequest)(nil),            // 4: core.UploadFileRequest
-	(*UploadFileResponse)(nil),           // 5: core.UploadFileResponse
-	(*GeneratePresignedURLRequest)(nil),  // 6: core.GeneratePresignedURLRequest
-	(*GeneratePresignedURLResponse)(nil), // 7: core.GeneratePresignedURLResponse
+	(ChannelType)(0),                     // 0: core.ChannelType
+	(*BaseRequest)(nil),                  // 1: core.BaseRequest
+	(*BaseResponse)(nil),                 // 2: core.BaseResponse
+	(*GenericRequest)(nil),               // 3: core.GenericRequest
+	(*GenericResponse)(nil),              // 4: core.GenericResponse
+	(*UploadFileRequest)(nil),            // 5: core.UploadFileRequest
+	(*UploadFileResponse)(nil),           // 6: core.UploadFileResponse
+	(*GeneratePresignedURLRequest)(nil),  // 7: core.GeneratePresignedURLRequest
+	(*GeneratePresignedURLResponse)(nil), // 8: core.GeneratePresignedURLResponse
 }
 var file_core_proto_depIdxs = []int32{
-	0, // 0: core.GenericRequest.base:type_name -> core.BaseRequest
-	1, // 1: core.GenericResponse.base:type_name -> core.BaseResponse
-	0, // 2: core.UploadFileRequest.base:type_name -> core.BaseRequest
-	1, // 3: core.UploadFileResponse.base:type_name -> core.BaseResponse
-	0, // 4: core.GeneratePresignedURLRequest.base:type_name -> core.BaseRequest
-	1, // 5: core.GeneratePresignedURLResponse.base:type_name -> core.BaseResponse
-	4, // 6: core.FileService.UploadFile:input_type -> core.UploadFileRequest
-	6, // 7: core.FileService.GeneratePresignedURL:input_type -> core.GeneratePresignedURLRequest
-	5, // 8: core.FileService.UploadFile:output_type -> core.UploadFileResponse
-	7, // 9: core.FileService.GeneratePresignedURL:output_type -> core.GeneratePresignedURLResponse
-	8, // [8:10] is the sub-list for method output_type
-	6, // [6:8] is the sub-list for method input_type
+	1, // 0: core.GenericRequest.base:type_name -> core.BaseRequest
+	2, // 1: core.GenericResponse.base:type_name -> core.BaseResponse
+	1, // 2: core.UploadFileRequest.base:type_name -> core.BaseRequest
+	2, // 3: core.UploadFileResponse.base:type_name -> core.BaseResponse
+	1, // 4: core.GeneratePresignedURLRequest.base:type_name -> core.BaseRequest
+	2, // 5: core.GeneratePresignedURLResponse.base:type_name -> core.BaseResponse
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
 	6, // [6:6] is the sub-list for extension type_name
 	6, // [6:6] is the sub-list for extension extendee
 	0, // [0:6] is the sub-list for field type_name
@@ -641,13 +680,14 @@ func file_core_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_proto_rawDesc), len(file_core_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   8,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_core_proto_goTypes,
 		DependencyIndexes: file_core_proto_depIdxs,
+		EnumInfos:         file_core_proto_enumTypes,
 		MessageInfos:      file_core_proto_msgTypes,
 	}.Build()
 	File_core_proto = out.File

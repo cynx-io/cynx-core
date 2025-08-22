@@ -2,8 +2,8 @@
 // @generated from file core.proto (package core, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
+import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -11,7 +11,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file core.proto.
  */
 export const file_core: GenFile = /*@__PURE__*/
-  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIs8BCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRISCgppcF9hZGRyZXNzGAQgASgJEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoBUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIioKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZSJ6ChFVcGxvYWRGaWxlUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIRCglmaWxlX2RhdGEYBSABKAwicwoSVXBsb2FkRmlsZVJlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZRIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhAKCGxvY2F0aW9uGAQgASgJEgwKBGV0YWcYBSABKAkijQEKG0dlbmVyYXRlUHJlc2lnbmVkVVJMUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIaChJleHBpcmVzX2luX3NlY29uZHMYBSABKAMiVAocR2VuZXJhdGVQcmVzaWduZWRVUkxSZXNwb25zZRIgCgRiYXNlGAEgASgLMhIuY29yZS5CYXNlUmVzcG9uc2USEgoKdXBsb2FkX3VybBgCIAEoCTKtAQoLRmlsZVNlcnZpY2USPwoKVXBsb2FkRmlsZRIXLmNvcmUuVXBsb2FkRmlsZVJlcXVlc3QaGC5jb3JlLlVwbG9hZEZpbGVSZXNwb25zZRJdChRHZW5lcmF0ZVByZXNpZ25lZFVSTBIhLmNvcmUuR2VuZXJhdGVQcmVzaWduZWRVUkxSZXF1ZXN0GiIuY29yZS5HZW5lcmF0ZVByZXNpZ25lZFVSTFJlc3BvbnNlQi1aK2dpdGh1Yi5jb20vY3lueC1pby9jeW54LWNvcmUvcHJvdG8vZ2VuO2NvcmViBnByb3RvMw", [file_google_protobuf_timestamp]);
+  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIs8BCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRISCgppcF9hZGRyZXNzGAQgASgJEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoBUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIioKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZSJ6ChFVcGxvYWRGaWxlUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIRCglmaWxlX2RhdGEYBSABKAwicwoSVXBsb2FkRmlsZVJlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZRIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhAKCGxvY2F0aW9uGAQgASgJEgwKBGV0YWcYBSABKAkijQEKG0dlbmVyYXRlUHJlc2lnbmVkVVJMUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIaChJleHBpcmVzX2luX3NlY29uZHMYBSABKAMiVAocR2VuZXJhdGVQcmVzaWduZWRVUkxSZXNwb25zZRIgCgRiYXNlGAEgASgLMhIuY29yZS5CYXNlUmVzcG9uc2USEgoKdXBsb2FkX3VybBgCIAEoCSoiCgtDaGFubmVsVHlwZRITCg9QRVJJTlRJU19DT1VSU0UQAEItWitnaXRodWIuY29tL2N5bngtaW8vY3lueC1jb3JlL3Byb3RvL2dlbjtjb3JlYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message core.BaseRequest
@@ -252,25 +252,18 @@ export const GeneratePresignedURLResponseSchema: GenMessage<GeneratePresignedURL
   messageDesc(file_core, 7);
 
 /**
- * @generated from service core.FileService
+ * @generated from enum core.ChannelType
  */
-export const FileService: GenService<{
+export enum ChannelType {
   /**
-   * @generated from rpc core.FileService.UploadFile
+   * @generated from enum value: PERINTIS_COURSE = 0;
    */
-  uploadFile: {
-    methodKind: "unary";
-    input: typeof UploadFileRequestSchema;
-    output: typeof UploadFileResponseSchema;
-  },
-  /**
-   * @generated from rpc core.FileService.GeneratePresignedURL
-   */
-  generatePresignedURL: {
-    methodKind: "unary";
-    input: typeof GeneratePresignedURLRequestSchema;
-    output: typeof GeneratePresignedURLResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_core, 0);
+  PERINTIS_COURSE = 0,
+}
+
+/**
+ * Describes the enum core.ChannelType.
+ */
+export const ChannelTypeSchema: GenEnum<ChannelType> = /*@__PURE__*/
+  enumDesc(file_core, 0);
 

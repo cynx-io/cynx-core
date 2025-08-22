@@ -12,8 +12,11 @@ proto:
 	buf generate
 
 
-TAG := v0.0.36
-COMMIT_MSG := "tech debt"
+TAG := v0.0.37
+COMMIT_MSG := "channel"
+
+publish_proto:
+	buf push --label $(TAG)
 
 .PHONY: publish
 publish: tidy

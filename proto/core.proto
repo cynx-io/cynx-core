@@ -61,7 +61,6 @@ message GeneratePresignedURLResponse {
   string upload_url = 2;
 }
 
-service FileService {
-  rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
-  rpc GeneratePresignedURL(GeneratePresignedURLRequest) returns (GeneratePresignedURLResponse);
+enum ChannelType {
+  PERINTIS_COURSE = 0;
 }
