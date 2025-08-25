@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.38
-COMMIT_MSG := "aws SES email"
+TAG := v0.0.39
+COMMIT_MSG := "entity breaking"
 
 publish_proto:
 	buf push --label $(TAG)
