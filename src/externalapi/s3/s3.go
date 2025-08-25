@@ -3,6 +3,7 @@ package s3
 import (
 	"bytes"
 	"context"
+	"github.com/cynx-io/cynx-core/src/model/dto"
 	"io"
 	"log"
 	"time"
@@ -19,7 +20,7 @@ var (
 	cfg           aws.Config
 )
 
-func Init(ctx context.Context, initCfg InitConfig) {
+func Init(ctx context.Context, initCfg dto.AwsConfig) {
 	var err error
 	cfg, err = config.LoadDefaultConfig(
 		ctx,
