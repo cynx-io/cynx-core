@@ -11,7 +11,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file core.proto.
  */
 export const file_core: GenFile = /*@__PURE__*/
-  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIs8BCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRISCgppcF9hZGRyZXNzGAQgASgJEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoBUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIioKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZSJ6ChFVcGxvYWRGaWxlUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIRCglmaWxlX2RhdGEYBSABKAwicwoSVXBsb2FkRmlsZVJlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZRIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhAKCGxvY2F0aW9uGAQgASgJEgwKBGV0YWcYBSABKAkijQEKG0dlbmVyYXRlUHJlc2lnbmVkVVJMUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIaChJleHBpcmVzX2luX3NlY29uZHMYBSABKAMiVAocR2VuZXJhdGVQcmVzaWduZWRVUkxSZXNwb25zZRIgCgRiYXNlGAEgASgLMhIuY29yZS5CYXNlUmVzcG9uc2USEgoKdXBsb2FkX3VybBgCIAEoCSoiCgtDaGFubmVsVHlwZRITCg9QRVJJTlRJU19DT1VSU0UQAEItWitnaXRodWIuY29tL2N5bngtaW8vY3lueC1jb3JlL3Byb3RvL2dlbjtjb3JlYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("Cgpjb3JlLnByb3RvEgRjb3JlIs8BCgtCYXNlUmVxdWVzdBISCgpyZXF1ZXN0X2lkGAEgASgJEhYKDnJlcXVlc3Rfb3JpZ2luGAIgASgJEhQKDHJlcXVlc3RfcGF0aBgDIAEoCRISCgppcF9hZGRyZXNzGAQgASgJEhQKB3VzZXJfaWQYBSABKAVIAIgBARIVCgh1c2VybmFtZRgGIAEoCUgBiAEBEhYKCXVzZXJfdHlwZRgHIAEoBUgCiAEBQgoKCF91c2VyX2lkQgsKCV91c2VybmFtZUIMCgpfdXNlcl90eXBlIkgKDEJhc2VSZXNwb25zZRIMCgRjb2RlGAEgASgJEgwKBGRlc2MYAiABKAkSHAoGc3RhdHVzGAMgASgOMgwuY29yZS5TdGF0dXMiMQoOR2VuZXJpY1JlcXVlc3QSHwoEYmFzZRgBIAEoCzIRLmNvcmUuQmFzZVJlcXVlc3QiMwoPR2VuZXJpY1Jlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZSJ6ChFVcGxvYWRGaWxlUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIRCglmaWxlX2RhdGEYBSABKAwicwoSVXBsb2FkRmlsZVJlc3BvbnNlEiAKBGJhc2UYASABKAsyEi5jb3JlLkJhc2VSZXNwb25zZRIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhAKCGxvY2F0aW9uGAQgASgJEgwKBGV0YWcYBSABKAkijQEKG0dlbmVyYXRlUHJlc2lnbmVkVVJMUmVxdWVzdBIfCgRiYXNlGAEgASgLMhEuY29yZS5CYXNlUmVxdWVzdBIOCgZidWNrZXQYAiABKAkSCwoDa2V5GAMgASgJEhQKDGNvbnRlbnRfdHlwZRgEIAEoCRIaChJleHBpcmVzX2luX3NlY29uZHMYBSABKAMiVAocR2VuZXJhdGVQcmVzaWduZWRVUkxSZXNwb25zZRIgCgRiYXNlGAEgASgLMhIuY29yZS5CYXNlUmVzcG9uc2USEgoKdXBsb2FkX3VybBgCIAEoCSoiCgtDaGFubmVsVHlwZRITCg9QRVJJTlRJU19DT1VSU0UQACpYCgZTdGF0dXMSCwoHU1VDQ0VTUxAAEgoKBkZBSUxFRBABEg0KCU5FRURfQVVUSBACEg4KCk5FRURfVE9LRU4QAxIWChJJTlNVRkZJQ0lFTlRfVE9LRU4QBEItWitnaXRodWIuY29tL2N5bngtaW8vY3lueC1jb3JlL3Byb3RvL2dlbjtjb3JlYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message core.BaseRequest
@@ -75,6 +75,11 @@ export type BaseResponse = Message<"core.BaseResponse"> & {
    * @generated from field: string desc = 2;
    */
   desc: string;
+
+  /**
+   * @generated from field: core.Status status = 3;
+   */
+  status: Status;
 };
 
 /**
@@ -266,4 +271,40 @@ export enum ChannelType {
  */
 export const ChannelTypeSchema: GenEnum<ChannelType> = /*@__PURE__*/
   enumDesc(file_core, 0);
+
+/**
+ * @generated from enum core.Status
+ */
+export enum Status {
+  /**
+   * @generated from enum value: SUCCESS = 0;
+   */
+  SUCCESS = 0,
+
+  /**
+   * @generated from enum value: FAILED = 1;
+   */
+  FAILED = 1,
+
+  /**
+   * @generated from enum value: NEED_AUTH = 2;
+   */
+  NEED_AUTH = 2,
+
+  /**
+   * @generated from enum value: NEED_TOKEN = 3;
+   */
+  NEED_TOKEN = 3,
+
+  /**
+   * @generated from enum value: INSUFFICIENT_TOKEN = 4;
+   */
+  INSUFFICIENT_TOKEN = 4,
+}
+
+/**
+ * Describes the enum core.Status.
+ */
+export const StatusSchema: GenEnum<Status> = /*@__PURE__*/
+  enumDesc(file_core, 1);
 

@@ -122,7 +122,9 @@ func setProtoBaseResponse(resp any) *core.BaseResponse {
 		v = v.Elem()
 	}
 
-	base := &core.BaseResponse{}
+	base := &core.BaseResponse{
+		Status: core.Status_FAILED,
+	}
 	field := v.FieldByName("Base")
 	if field.IsValid() && field.CanSet() {
 		field.Set(reflect.ValueOf(base))

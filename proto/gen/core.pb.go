@@ -65,6 +65,61 @@ func (ChannelType) EnumDescriptor() ([]byte, []int) {
 	return file_core_proto_rawDescGZIP(), []int{0}
 }
 
+type Status int32
+
+const (
+	Status_SUCCESS            Status = 0
+	Status_FAILED             Status = 1
+	Status_NEED_AUTH          Status = 2
+	Status_NEED_TOKEN         Status = 3
+	Status_INSUFFICIENT_TOKEN Status = 4
+)
+
+// Enum value maps for Status.
+var (
+	Status_name = map[int32]string{
+		0: "SUCCESS",
+		1: "FAILED",
+		2: "NEED_AUTH",
+		3: "NEED_TOKEN",
+		4: "INSUFFICIENT_TOKEN",
+	}
+	Status_value = map[string]int32{
+		"SUCCESS":            0,
+		"FAILED":             1,
+		"NEED_AUTH":          2,
+		"NEED_TOKEN":         3,
+		"INSUFFICIENT_TOKEN": 4,
+	}
+)
+
+func (x Status) Enum() *Status {
+	p := new(Status)
+	*p = x
+	return p
+}
+
+func (x Status) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Status) Descriptor() protoreflect.EnumDescriptor {
+	return file_core_proto_enumTypes[1].Descriptor()
+}
+
+func (Status) Type() protoreflect.EnumType {
+	return &file_core_proto_enumTypes[1]
+}
+
+func (x Status) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Status.Descriptor instead.
+func (Status) EnumDescriptor() ([]byte, []int) {
+	return file_core_proto_rawDescGZIP(), []int{1}
+}
+
 type BaseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RequestId     string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
@@ -161,6 +216,7 @@ type BaseResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
 	Desc          string                 `protobuf:"bytes,2,opt,name=desc,proto3" json:"desc,omitempty"`
+	Status        Status                 `protobuf:"varint,3,opt,name=status,proto3,enum=core.Status" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -207,6 +263,13 @@ func (x *BaseResponse) GetDesc() string {
 		return x.Desc
 	}
 	return ""
+}
+
+func (x *BaseResponse) GetStatus() Status {
+	if x != nil {
+		return x.Status
+	}
+	return Status_SUCCESS
 }
 
 type GenericRequest struct {
@@ -597,10 +660,11 @@ const file_core_proto_rawDesc = "" +
 	"\b_user_idB\v\n" +
 	"\t_usernameB\f\n" +
 	"\n" +
-	"_user_type\"6\n" +
+	"_user_type\"\\\n" +
 	"\fBaseResponse\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
-	"\x04desc\x18\x02 \x01(\tR\x04desc\"7\n" +
+	"\x04desc\x18\x02 \x01(\tR\x04desc\x12$\n" +
+	"\x06status\x18\x03 \x01(\x0e2\f.core.StatusR\x06status\"7\n" +
 	"\x0eGenericRequest\x12%\n" +
 	"\x04base\x18\x01 \x01(\v2\x11.core.BaseRequestR\x04base\"9\n" +
 	"\x0fGenericResponse\x12&\n" +
@@ -628,7 +692,15 @@ const file_core_proto_rawDesc = "" +
 	"\n" +
 	"upload_url\x18\x02 \x01(\tR\tuploadUrl*\"\n" +
 	"\vChannelType\x12\x13\n" +
-	"\x0fPERINTIS_COURSE\x10\x00B-Z+github.com/cynx-io/cynx-core/proto/gen;coreb\x06proto3"
+	"\x0fPERINTIS_COURSE\x10\x00*X\n" +
+	"\x06Status\x12\v\n" +
+	"\aSUCCESS\x10\x00\x12\n" +
+	"\n" +
+	"\x06FAILED\x10\x01\x12\r\n" +
+	"\tNEED_AUTH\x10\x02\x12\x0e\n" +
+	"\n" +
+	"NEED_TOKEN\x10\x03\x12\x16\n" +
+	"\x12INSUFFICIENT_TOKEN\x10\x04B-Z+github.com/cynx-io/cynx-core/proto/gen;coreb\x06proto3"
 
 var (
 	file_core_proto_rawDescOnce sync.Once
@@ -642,31 +714,33 @@ func file_core_proto_rawDescGZIP() []byte {
 	return file_core_proto_rawDescData
 }
 
-var file_core_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_core_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_core_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_core_proto_goTypes = []any{
 	(ChannelType)(0),                     // 0: core.ChannelType
-	(*BaseRequest)(nil),                  // 1: core.BaseRequest
-	(*BaseResponse)(nil),                 // 2: core.BaseResponse
-	(*GenericRequest)(nil),               // 3: core.GenericRequest
-	(*GenericResponse)(nil),              // 4: core.GenericResponse
-	(*UploadFileRequest)(nil),            // 5: core.UploadFileRequest
-	(*UploadFileResponse)(nil),           // 6: core.UploadFileResponse
-	(*GeneratePresignedURLRequest)(nil),  // 7: core.GeneratePresignedURLRequest
-	(*GeneratePresignedURLResponse)(nil), // 8: core.GeneratePresignedURLResponse
+	(Status)(0),                          // 1: core.Status
+	(*BaseRequest)(nil),                  // 2: core.BaseRequest
+	(*BaseResponse)(nil),                 // 3: core.BaseResponse
+	(*GenericRequest)(nil),               // 4: core.GenericRequest
+	(*GenericResponse)(nil),              // 5: core.GenericResponse
+	(*UploadFileRequest)(nil),            // 6: core.UploadFileRequest
+	(*UploadFileResponse)(nil),           // 7: core.UploadFileResponse
+	(*GeneratePresignedURLRequest)(nil),  // 8: core.GeneratePresignedURLRequest
+	(*GeneratePresignedURLResponse)(nil), // 9: core.GeneratePresignedURLResponse
 }
 var file_core_proto_depIdxs = []int32{
-	1, // 0: core.GenericRequest.base:type_name -> core.BaseRequest
-	2, // 1: core.GenericResponse.base:type_name -> core.BaseResponse
-	1, // 2: core.UploadFileRequest.base:type_name -> core.BaseRequest
-	2, // 3: core.UploadFileResponse.base:type_name -> core.BaseResponse
-	1, // 4: core.GeneratePresignedURLRequest.base:type_name -> core.BaseRequest
-	2, // 5: core.GeneratePresignedURLResponse.base:type_name -> core.BaseResponse
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	1, // 0: core.BaseResponse.status:type_name -> core.Status
+	2, // 1: core.GenericRequest.base:type_name -> core.BaseRequest
+	3, // 2: core.GenericResponse.base:type_name -> core.BaseResponse
+	2, // 3: core.UploadFileRequest.base:type_name -> core.BaseRequest
+	3, // 4: core.UploadFileResponse.base:type_name -> core.BaseResponse
+	2, // 5: core.GeneratePresignedURLRequest.base:type_name -> core.BaseRequest
+	3, // 6: core.GeneratePresignedURLResponse.base:type_name -> core.BaseResponse
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_core_proto_init() }
@@ -680,7 +754,7 @@ func file_core_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_core_proto_rawDesc), len(file_core_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,

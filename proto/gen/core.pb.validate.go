@@ -180,6 +180,8 @@ func (m *BaseResponse) validate(all bool) error {
 
 	// no validation rules for Desc
 
+	// no validation rules for Status
+
 	if len(errors) > 0 {
 		return BaseResponseMultiError(errors)
 	}

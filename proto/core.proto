@@ -22,6 +22,7 @@ message BaseRequest {
 message BaseResponse {
   string code = 1;
   string desc = 2;
+  Status status = 3;
 }
 
 message GenericRequest {
@@ -63,4 +64,12 @@ message GeneratePresignedURLResponse {
 
 enum ChannelType {
   PERINTIS_COURSE = 0;
+}
+
+enum Status {
+  SUCCESS = 0;
+  FAILED = 1;
+  NEED_AUTH = 2;
+  NEED_TOKEN = 3;
+  INSUFFICIENT_TOKEN = 4;
 }
