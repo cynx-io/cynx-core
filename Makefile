@@ -12,7 +12,7 @@ proto:
 	buf generate
 
 
-TAG := v0.0.41
+TAG := v0.0.42
 COMMIT_MSG := "s3 move object"
 
 publish_proto:
