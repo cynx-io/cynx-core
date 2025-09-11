@@ -124,6 +124,21 @@ func DeleteObject(ctx context.Context, bucket, key string) error {
 	return err
 }
 
+func MoveObject(ctx context.Context, bucket, previousKey, newKey string) error {
+	copyParams := &s3.CopyObjectInput{
+		Bucket:     aws.String(bucket),
+		Key:        aws.String(newKey),
+		CopySource: aws.String(bucket + "/" + previousKey),
+	}
+
+	_, err := client.CopyObject(ctx, copyParams)
+	if err != nil {
+		return err
+	}
+
+	return DeleteObject(ctx, bucket, previousKey)
+}
+
 func GetObjectURL(bucket, key string) string {
 	return "https://" + bucket + ".s3." + cfg.Region + ".amazonaws.com/" + key
 }

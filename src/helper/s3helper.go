@@ -2,6 +2,7 @@ package helper
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/cynx-io/cynx-core/proto/gen"
@@ -15,7 +16,7 @@ func HandleUploadFile(ctx context.Context, req *core.UploadFileRequest, resp *co
 			Code: codes.InvalidArgument.String(),
 			Desc: "Base request is required",
 		}
-		return nil
+		return errors.New("base request is required")
 	}
 
 	if req.Bucket == "" {
@@ -23,7 +24,7 @@ func HandleUploadFile(ctx context.Context, req *core.UploadFileRequest, resp *co
 			Code: codes.InvalidArgument.String(),
 			Desc: "Bucket is required",
 		}
-		return nil
+		return errors.New("bucket is required")
 	}
 
 	if req.Key == "" {
@@ -31,7 +32,7 @@ func HandleUploadFile(ctx context.Context, req *core.UploadFileRequest, resp *co
 			Code: codes.InvalidArgument.String(),
 			Desc: "Key is required",
 		}
-		return nil
+		return errors.New("key is required")
 	}
 
 	if req.ContentType == "" {
@@ -39,7 +40,7 @@ func HandleUploadFile(ctx context.Context, req *core.UploadFileRequest, resp *co
 			Code: codes.InvalidArgument.String(),
 			Desc: "Content type is required",
 		}
-		return nil
+		return errors.New("content type is required")
 	}
 
 	if len(req.FileData) == 0 {
@@ -47,7 +48,7 @@ func HandleUploadFile(ctx context.Context, req *core.UploadFileRequest, resp *co
 			Code: codes.InvalidArgument.String(),
 			Desc: "File data is required",
 		}
-		return nil
+		return errors.New("file data is required")
 	}
 
 	result, err := s3.UploadFile(ctx, req.Bucket, req.Key, req.ContentType, req.FileData)
@@ -56,7 +57,7 @@ func HandleUploadFile(ctx context.Context, req *core.UploadFileRequest, resp *co
 			Code: codes.Internal.String(),
 			Desc: "Failed to upload file: " + err.Error(),
 		}
-		return nil
+		return err
 	}
 
 	resp.Base = &core.BaseResponse{

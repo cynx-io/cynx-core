@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.40
-COMMIT_MSG := "response status"
+TAG := v0.0.41
+COMMIT_MSG := "s3 move object"
 
 publish_proto:
 	buf push --label $(TAG)
