@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.42
-COMMIT_MSG := "s3 move object"
+TAG := v0.0.43
+COMMIT_MSG := "proto bible channel"
 
 publish_proto:
 	buf push --label $(TAG)

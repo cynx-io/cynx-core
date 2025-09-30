@@ -26,15 +26,18 @@ type ChannelType int32
 
 const (
 	ChannelType_PERINTIS_COURSE ChannelType = 0
+	ChannelType_BIBLE_APP       ChannelType = 1
 )
 
 // Enum value maps for ChannelType.
 var (
 	ChannelType_name = map[int32]string{
 		0: "PERINTIS_COURSE",
+		1: "BIBLE_APP",
 	}
 	ChannelType_value = map[string]int32{
 		"PERINTIS_COURSE": 0,
+		"BIBLE_APP":       1,
 	}
 )
 
@@ -690,9 +693,10 @@ const file_core_proto_rawDesc = "" +
 	"\x1cGeneratePresignedURLResponse\x12&\n" +
 	"\x04base\x18\x01 \x01(\v2\x12.core.BaseResponseR\x04base\x12\x1d\n" +
 	"\n" +
-	"upload_url\x18\x02 \x01(\tR\tuploadUrl*\"\n" +
+	"upload_url\x18\x02 \x01(\tR\tuploadUrl*1\n" +
 	"\vChannelType\x12\x13\n" +
-	"\x0fPERINTIS_COURSE\x10\x00*X\n" +
+	"\x0fPERINTIS_COURSE\x10\x00\x12\r\n" +
+	"\tBIBLE_APP\x10\x01*X\n" +
 	"\x06Status\x12\v\n" +
 	"\aSUCCESS\x10\x00\x12\n" +
 	"\n" +

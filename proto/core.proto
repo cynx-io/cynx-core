@@ -64,6 +64,7 @@ message GeneratePresignedURLResponse {
 
 enum ChannelType {
   PERINTIS_COURSE = 0;
+  BIBLE_APP = 1;
 }
 
 enum Status {
