@@ -12,8 +12,8 @@ proto:
 	buf generate
 
 
-TAG := v0.0.45
-COMMIT_MSG := "proto bible channel"
+TAG := v0.0.46
+COMMIT_MSG := "channel in base req"
 
 publish_proto:
 	buf push --label $(TAG)
@@ -27,4 +27,5 @@ publish: tidy
 	git tag -a $(TAG) -m $(COMMIT_MSG)
 	git push origin $(TAG)
 	buf push --label $(TAG)
+	buf push
 
