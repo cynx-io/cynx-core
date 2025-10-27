@@ -12,11 +12,12 @@ proto:
 	buf generate
 
 
-TAG := v0.0.44
+TAG := v0.0.45
 COMMIT_MSG := "proto bible channel"
 
 publish_proto:
 	buf push --label $(TAG)
+	buf push
 
 .PHONY: publish
 publish: tidy
