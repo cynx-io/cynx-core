@@ -12,7 +12,7 @@ proto:
 	buf generate
 
 
-TAG := v0.0.46
+TAG := v0.0.47
 COMMIT_MSG := "channel in base req"
 
 publish_proto:
