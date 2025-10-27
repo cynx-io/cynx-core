@@ -12,7 +12,7 @@ proto:
 	buf generate
 
 
-TAG := v0.0.43
+TAG := v0.0.44
 COMMIT_MSG := "proto bible channel"
 
 publish_proto:

@@ -7,19 +7,11 @@ import (
 	"strconv"
 
 	"github.com/cynx-io/cynx-core/proto/gen"
-	"github.com/cynx-io/cynx-core/src/externalapi/s3"
 	"github.com/cynx-io/cynx-core/src/helper"
 )
 
 func main() {
 	fmt.Println("S3 Upload Demo")
-
-	// Initialize S3 (you would normally load these from config)
-	s3.Init(context.Background(), s3.InitConfig{
-		Region:          "ap-southeast-3", // Southeast Asia (Jakarta)
-		AccessKeyID:     "YOUR_ACCESS_KEY",
-		SecretAccessKey: "YOUR_SECRET_KEY",
-	})
 
 	// Demo 1: Generate presigned URL
 	fmt.Println("\n=== Demo 1: Generate Presigned URL ===")
